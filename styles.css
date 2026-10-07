@@ -347,35 +347,6 @@ button:disabled {
 }
 
 
-/* =========================================================
-   PROGRESS
-========================================================= */
-
-.progress-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
-
-  margin: 20px 0;
-}
-
-.progress-box {
-  background: #f8fafc;
-  padding: 18px;
-  border-radius: 15px;
-  text-align: center;
-}
-
-.progress-box span {
-  display: block;
-  color: #6b7280;
-  margin-bottom: 5px;
-}
-
-.progress-box strong {
-  font-size: 24px;
-}
-
 
 /* =========================================================
    WHEEL
