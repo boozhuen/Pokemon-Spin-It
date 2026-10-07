@@ -20,6 +20,10 @@ const pinError =
   document.getElementById("pinError");
 
 
+/* =========================================================
+   UNLOCK ADMIN
+========================================================= */
+
 function unlockAdmin() {
 
   const enteredPin =
@@ -28,10 +32,16 @@ function unlockAdmin() {
 
   if (enteredPin === ADMIN_PIN) {
 
+    // Clear previous error
+    pinError.textContent = "";
+
+    // Hide PIN screen
     pinLock.classList.add("pin-hidden");
 
+    // Show admin controls
     adminContent.classList.remove("hidden");
 
+    // Remember unlock for this browser tab
     sessionStorage.setItem(
       "pokemonAdminUnlocked",
       "true"
@@ -51,17 +61,27 @@ function unlockAdmin() {
 }
 
 
+/* =========================================================
+   PIN BUTTON
+========================================================= */
+
 pinButton.addEventListener(
   "click",
   unlockAdmin
 );
 
 
+/* =========================================================
+   ENTER KEY
+========================================================= */
+
 pinInput.addEventListener(
   "keydown",
   event => {
 
     if (event.key === "Enter") {
+
+      event.preventDefault();
 
       unlockAdmin();
 
@@ -71,10 +91,10 @@ pinInput.addEventListener(
 );
 
 
-/*
-   Keep admin unlocked when refreshing
-   the page in the same browser tab.
-*/
+/* =========================================================
+   KEEP ADMIN UNLOCKED AFTER REFRESH
+   (SAME BROWSER TAB ONLY)
+========================================================= */
 
 if (
   sessionStorage.getItem(
@@ -82,24 +102,39 @@ if (
   ) === "true"
 ) {
 
-  pinLock.classList.add("hidden");
+  pinLock.classList.add("pin-hidden");
 
   adminContent.classList.remove("hidden");
 
 }
+
 
 /* =========================================================
    FIREBASE
 ========================================================= */
 
 const firebaseConfig = {
-  apiKey: "AIzaSyD7sHpbgESBLvdegJLgUmN-AYzC1UMzMXw",
-  authDomain: "pokemon-spin-it.firebaseapp.com",
-  projectId: "pokemon-spin-it",
-  storageBucket: "pokemon-spin-it.firebasestorage.app",
-  messagingSenderId: "173320668039",
-  appId: "1:173320668039:web:0817a1af6afb06e7cf4922"
+
+  apiKey:
+    "AIzaSyD7sHpbgESBLvdegJLgUmN-AYzC1UMzMXw",
+
+  authDomain:
+    "pokemon-spin-it.firebaseapp.com",
+
+  projectId:
+    "pokemon-spin-it",
+
+  storageBucket:
+    "pokemon-spin-it.firebasestorage.app",
+
+  messagingSenderId:
+    "173320668039",
+
+  appId:
+    "1:173320668039:web:0817a1af6afb06e7cf4922"
+
 };
+
 
 firebase.initializeApp(firebaseConfig);
 
@@ -110,7 +145,6 @@ const db =
 const drawRef =
   db.collection("luckyDraw")
     .doc("current");
-
 
 
 /* =========================================================
@@ -198,7 +232,6 @@ const latestWinnerGroup =
   document.getElementById("latestWinnerGroup");
 
 
-
 /* =========================================================
    LOCAL STATE
 ========================================================= */
@@ -206,7 +239,6 @@ const latestWinnerGroup =
 let currentDraw = null;
 
 let spinLocked = false;
-
 
 
 /* =========================================================
@@ -221,7 +253,6 @@ function getNames(text) {
     .filter(name => name !== "");
 
 }
-
 
 
 /* =========================================================
@@ -277,8 +308,11 @@ function calculateAllocation() {
 
 
     return {
+
       policyTarget: 0,
+
       planningTarget: 0
+
     };
 
   }
@@ -298,6 +332,16 @@ function calculateAllocation() {
     `${(planningRatio * 100).toFixed(1)}%`;
 
 
+  /*
+     Round Policy allocation to nearest
+     whole number.
+
+     Planning gets the remaining prizes,
+     guaranteeing that:
+
+     Policy + Planning = Total Prizes
+  */
+
   let policyTarget =
     Math.round(
       prizes * policyRatio
@@ -308,10 +352,9 @@ function calculateAllocation() {
     prizes - policyTarget;
 
 
-
   /*
-     Prevent allocation exceeding
-     available participants.
+     Prevent allocating more prizes
+     than participants available.
   */
 
   if (
@@ -356,29 +399,36 @@ function calculateAllocation() {
 
 
   return {
+
     policyTarget,
+
     planningTarget
+
   };
 
 }
 
 
+/* =========================================================
+   LIVE CALCULATION
+========================================================= */
 
 policyNamesInput.addEventListener(
   "input",
   calculateAllocation
 );
 
+
 planningNamesInput.addEventListener(
   "input",
   calculateAllocation
 );
 
+
 prizeCountInput.addEventListener(
   "input",
   calculateAllocation
 );
-
 
 
 /* =========================================================
@@ -397,11 +447,15 @@ async function saveDraw() {
 
 
   const policy =
-    getNames(policyNamesInput.value);
+    getNames(
+      policyNamesInput.value
+    );
 
 
   const planning =
-    getNames(planningNamesInput.value);
+    getNames(
+      planningNamesInput.value
+    );
 
 
   const totalParticipants =
@@ -415,7 +469,9 @@ async function saveDraw() {
     );
 
 
-  if (totalParticipants === 0) {
+  if (
+    totalParticipants === 0
+  ) {
 
     setupMessage.textContent =
       "Please enter participants.";
@@ -456,69 +512,96 @@ async function saveDraw() {
 
 
   const policyParticipants =
-    policy.map((name, index) => ({
+    policy.map(
+      (name, index) => ({
 
-      id: `policy-${index}`,
-      name,
-      group: "Policy"
+        id: `policy-${index}`,
 
-    }));
+        name,
+
+        group: "Policy"
+
+      })
+    );
 
 
   const planningParticipants =
-    planning.map((name, index) => ({
+    planning.map(
+      (name, index) => ({
 
-      id: `planning-${index}`,
-      name,
-      group: "Planning"
+        id: `planning-${index}`,
 
-    }));
+        name,
+
+        group: "Planning"
+
+      })
+    );
 
 
   const participants = [
+
     ...policyParticipants,
+
     ...planningParticipants
+
   ];
 
 
-  await drawRef.set({
+  try {
 
-    participants,
+    await drawRef.set({
 
-    winners: [],
+      participants,
 
-    totalPrizes,
+      winners: [],
 
-    policyTarget:
-      allocation.policyTarget,
+      totalPrizes,
 
-    planningTarget:
-      allocation.planningTarget,
+      policyTarget:
+        allocation.policyTarget,
 
-    policyWon: 0,
+      planningTarget:
+        allocation.planningTarget,
 
-    planningWon: 0,
+      policyWon: 0,
 
-    spinId: 0,
+      planningWon: 0,
 
-    spinning: false,
+      spinId: 0,
 
-    selectedWinner: null,
+      spinning: false,
 
-    drawComplete: false,
+      selectedWinner: null,
 
-    updatedAt:
-      firebase.firestore.FieldValue
-        .serverTimestamp()
+      drawComplete: false,
 
-  });
+      updatedAt:
+        firebase.firestore
+          .FieldValue
+          .serverTimestamp()
+
+    });
 
 
-  setupMessage.textContent =
-    "✓ Lucky draw saved! Broadcast screen is ready.";
+    setupMessage.textContent =
+      "✓ Lucky draw saved! Broadcast screen is ready.";
+
+
+  } catch (error) {
+
+    console.error(
+      "Error saving lucky draw:",
+      error
+    );
+
+
+    setupMessage.textContent =
+      "Unable to save the lucky draw. Check Firebase permissions.";
+
+  }
 
 }
-
 
 
 /* =========================================================
@@ -528,7 +611,9 @@ async function saveDraw() {
 function getEligibleParticipants(draw) {
 
   if (!draw) {
+
     return [];
+
   }
 
 
@@ -565,6 +650,11 @@ function getEligibleParticipants(draw) {
     );
 
 
+  /*
+     Policy quota reached:
+     only Planning remains eligible.
+  */
+
   if (
     draw.policyWon >=
     draw.policyTarget
@@ -574,6 +664,11 @@ function getEligibleParticipants(draw) {
 
   }
 
+
+  /*
+     Planning quota reached:
+     only Policy remains eligible.
+  */
 
   if (
     draw.planningWon >=
@@ -585,10 +680,14 @@ function getEligibleParticipants(draw) {
   }
 
 
+  /*
+     Neither quota reached:
+     everyone remaining is eligible.
+  */
+
   return remaining;
 
 }
-
 
 
 /* =========================================================
@@ -597,8 +696,12 @@ function getEligibleParticipants(draw) {
 
 function randomWinner(eligible) {
 
-  if (eligible.length === 0) {
+  if (
+    eligible.length === 0
+  ) {
+
     return null;
+
   }
 
 
@@ -609,10 +712,11 @@ function randomWinner(eligible) {
     );
 
 
-  return eligible[randomIndex];
+  return eligible[
+    randomIndex
+  ];
 
 }
-
 
 
 /* =========================================================
@@ -631,14 +735,18 @@ async function spinWheel() {
     spinLocked ||
     !currentDraw
   ) {
+
     return;
+
   }
 
 
   if (
     currentDraw.drawComplete
   ) {
+
     return;
+
   }
 
 
@@ -651,7 +759,9 @@ async function spinWheel() {
   if (
     eligible.length === 0
   ) {
+
     return;
+
   }
 
 
@@ -661,155 +771,210 @@ async function spinWheel() {
 
 
   const winner =
-    randomWinner(eligible);
+    randomWinner(
+      eligible
+    );
 
 
   const newSpinId =
     (currentDraw.spinId || 0) + 1;
 
 
-  /*
-     First tell the broadcast screen
-     to begin spinning.
-  */
+  try {
 
-  await drawRef.update({
+    /*
+       Tell broadcast screen
+       to begin spinning.
+    */
 
-    spinning: true,
+    await drawRef.update({
 
-    selectedWinner: winner,
+      spinning: true,
 
-    spinId: newSpinId,
+      selectedWinner:
+        winner,
 
-    updatedAt:
-      firebase.firestore.FieldValue
-        .serverTimestamp()
+      spinId:
+        newSpinId,
 
-  });
+      updatedAt:
+        firebase.firestore
+          .FieldValue
+          .serverTimestamp()
 
-
-  /*
-     Wheel animation lasts ~5 seconds.
-
-     Afterward, officially register
-     the winner.
-  */
-
-  setTimeout(
-    async () => {
-
-      try {
-
-        const snapshot =
-          await drawRef.get();
+    });
 
 
-        if (!snapshot.exists) {
-          return;
-        }
+    /*
+       Broadcast animation takes
+       approximately 5 seconds.
+    */
+
+    setTimeout(
+      async () => {
+
+        try {
+
+          const snapshot =
+            await drawRef.get();
 
 
-        const draw =
-          snapshot.data();
+          if (
+            !snapshot.exists
+          ) {
+
+            return;
+
+          }
 
 
-        const winners =
-          draw.winners || [];
+          const draw =
+            snapshot.data();
 
 
-        /*
-           Avoid accidentally registering
-           the same spin twice.
-        */
+          const winners =
+            draw.winners || [];
 
-        if (
-          winners.some(
-            existing =>
-              existing.spinId ===
+
+          /*
+             Prevent duplicate
+             registration.
+          */
+
+          if (
+            winners.some(
+              existing =>
+                existing.spinId ===
+                newSpinId
+            )
+          ) {
+
+            return;
+
+          }
+
+
+          const winnerRecord = {
+
+            ...winner,
+
+            spinId:
               newSpinId
-          )
-        ) {
 
-          return;
+          };
+
+
+          const updatedWinners = [
+
+            ...winners,
+
+            winnerRecord
+
+          ];
+
+
+          let policyWon =
+            draw.policyWon || 0;
+
+
+          let planningWon =
+            draw.planningWon || 0;
+
+
+          if (
+            winner.group ===
+            "Policy"
+          ) {
+
+            policyWon++;
+
+          } else {
+
+            planningWon++;
+
+          }
+
+
+          const drawComplete =
+            updatedWinners.length >=
+            draw.totalPrizes;
+
+
+          await drawRef.update({
+
+            winners:
+              updatedWinners,
+
+            policyWon,
+
+            planningWon,
+
+            spinning: false,
+
+            drawComplete,
+
+            updatedAt:
+              firebase.firestore
+                .FieldValue
+                .serverTimestamp()
+
+          });
+
+
+        } catch (error) {
+
+          console.error(
+            "Error completing spin:",
+            error
+          );
+
+
+          try {
+
+            await drawRef.update({
+
+              spinning: false
+
+            });
+
+          } catch (resetError) {
+
+            console.error(
+              resetError
+            );
+
+          }
+
+
+        } finally {
+
+          spinLocked = false;
+
+          spinButton.disabled = false;
 
         }
 
+      },
 
-        const winnerRecord = {
-
-          ...winner,
-
-          spinId: newSpinId
-
-        };
+      5500
+    );
 
 
-        const updatedWinners = [
-          ...winners,
-          winnerRecord
-        ];
+  } catch (error) {
+
+    console.error(
+      "Error starting spin:",
+      error
+    );
 
 
-        let policyWon =
-          draw.policyWon || 0;
+    spinLocked = false;
 
-        let planningWon =
-          draw.planningWon || 0;
+    spinButton.disabled = false;
 
-
-        if (
-          winner.group ===
-          "Policy"
-        ) {
-
-          policyWon++;
-
-        } else {
-
-          planningWon++;
-
-        }
-
-
-        const drawComplete =
-          updatedWinners.length >=
-          draw.totalPrizes;
-
-
-        await drawRef.update({
-
-          winners:
-            updatedWinners,
-
-          policyWon,
-
-          planningWon,
-
-          spinning: false,
-
-          drawComplete,
-
-          updatedAt:
-            firebase.firestore.FieldValue
-              .serverTimestamp()
-
-        });
-
-
-      } finally {
-
-        spinLocked = false;
-
-        spinButton.disabled = false;
-
-      }
-
-    },
-    5500
-  );
+  }
 
 }
-
 
 
 /* =========================================================
@@ -828,20 +993,25 @@ async function undoLastWinner() {
     !currentDraw ||
     currentDraw.spinning
   ) {
+
     return;
+
   }
 
 
-  const winners =
-    [
-      ...(currentDraw.winners || [])
-    ];
+  const winners = [
+
+    ...(currentDraw.winners || [])
+
+  ];
 
 
   if (
     winners.length === 0
   ) {
+
     return;
+
   }
 
 
@@ -851,6 +1021,7 @@ async function undoLastWinner() {
 
   let policyWon =
     currentDraw.policyWon || 0;
+
 
   let planningWon =
     currentDraw.planningWon || 0;
@@ -893,13 +1064,13 @@ async function undoLastWinner() {
     spinning: false,
 
     updatedAt:
-      firebase.firestore.FieldValue
+      firebase.firestore
+        .FieldValue
         .serverTimestamp()
 
   });
 
 }
-
 
 
 /* =========================================================
@@ -915,7 +1086,9 @@ resetButton.addEventListener(
 async function resetDraw() {
 
   if (!currentDraw) {
+
     return;
+
   }
 
 
@@ -926,7 +1099,9 @@ async function resetDraw() {
 
 
   if (!confirmed) {
+
     return;
+
   }
 
 
@@ -948,7 +1123,8 @@ async function resetDraw() {
     drawComplete: false,
 
     updatedAt:
-      firebase.firestore.FieldValue
+      firebase.firestore
+        .FieldValue
         .serverTimestamp()
 
   });
@@ -956,21 +1132,25 @@ async function resetDraw() {
 }
 
 
-
 /* =========================================================
    FIRESTORE LIVE LISTENER
 ========================================================= */
 
 drawRef.onSnapshot(
+
   snapshot => {
 
-    if (!snapshot.exists) {
+    if (
+      !snapshot.exists
+    ) {
 
       currentDraw = null;
+
 
       controlSection.classList.add(
         "hidden"
       );
+
 
       return;
 
@@ -986,34 +1166,32 @@ drawRef.onSnapshot(
     );
 
 
+    const winners =
+      currentDraw.winners || [];
+
+
     prizesAwardedDisplay.textContent =
-      (
-        currentDraw.winners || []
-      ).length;
+      winners.length;
 
 
     totalPrizesDisplay.textContent =
-      currentDraw.totalPrizes;
+      currentDraw.totalPrizes || 0;
 
 
     policyWonDisplay.textContent =
-      currentDraw.policyWon;
+      currentDraw.policyWon || 0;
 
 
     planningWonDisplay.textContent =
-      currentDraw.planningWon;
+      currentDraw.planningWon || 0;
 
 
     policyTargetDisplay.textContent =
-      currentDraw.policyTarget;
+      currentDraw.policyTarget || 0;
 
 
     planningTargetDisplay.textContent =
-      currentDraw.planningTarget;
-
-
-    const winners =
-      currentDraw.winners || [];
+      currentDraw.planningTarget || 0;
 
 
     if (
@@ -1038,6 +1216,7 @@ drawRef.onSnapshot(
         "hidden"
       );
 
+
     } else {
 
       latestWinner.classList.add(
@@ -1051,9 +1230,18 @@ drawRef.onSnapshot(
       currentDraw.spinning ||
       currentDraw.drawComplete;
 
-  }
-);
+  },
 
+  error => {
+
+    console.error(
+      "Firestore listener error:",
+      error
+    );
+
+  }
+
+);
 
 
 /* =========================================================
