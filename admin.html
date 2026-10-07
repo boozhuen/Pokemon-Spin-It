@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Pokémon Lucky Draw Admin</title>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <main class="page-shell">
+
+    <section class="card hero-card">
+      <div class="pokeball"></div>
+
+      <p class="eyebrow">Admin Control Centre</p>
+
+      <h1>Pokémon Lucky Draw</h1>
+
+      <p class="subtitle">
+        Set up participants and control the lucky draw.
+      </p>
+    </section>
+
+
+    <!-- ==========================================
+         SETUP
+    =========================================== -->
+
+    <section class="card">
+
+      <h2>Participant Setup</h2>
+
+      <div class="name-grid">
+
+        <!-- POLICY -->
+
+        <div class="name-box">
+
+          <div class="section-heading">
+
+            <h3>Policy</h3>
+
+            <span
+              id="policyCount"
+              class="count-badge"
+            >
+              0 people
+            </span>
+
+          </div>
+
+          <textarea
+            id="policyNames"
+            placeholder="Enter one name per line"
+          ></textarea>
+
+        </div>
+
+
+        <!-- PLANNING -->
+
+        <div class="name-box">
+
+          <div class="section-heading">
+
+            <h3>Planning</h3>
+
+            <span
+              id="planningCount"
+              class="count-badge"
+            >
+              0 people
+            </span>
+
+          </div>
+
+          <textarea
+            id="planningNames"
+            placeholder="Enter one name per line"
+          ></textarea>
+
+        </div>
+
+      </div>
+
+
+      <!-- PRIZES -->
+
+      <div class="prize-input-area">
+
+        <label for="prizeCount">
+          Number of available prizes
+        </label>
+
+        <input
+          id="prizeCount"
+          type="number"
+          min="1"
+          value="3"
+        />
+
+      </div>
+
+
+      <!-- ALLOCATION -->
+
+      <div class="allocation-card">
+
+        <h3>Calculated Allocation</h3>
+
+        <div class="allocation-grid">
+
+          <div>
+            <span class="allocation-label">
+              Total Participants
+            </span>
+
+            <strong id="totalParticipants">
+              0
+            </strong>
+          </div>
+
+
+          <div>
+            <span class="allocation-label">
+              Policy Ratio
+            </span>
+
+            <strong id="policyRatio">
+              0%
+            </strong>
+          </div>
+
+
+          <div>
+            <span class="allocation-label">
+              Planning Ratio
+            </span>
+
+            <strong id="planningRatio">
+              0%
+            </strong>
+          </div>
+
+
+          <div>
+            <span class="allocation-label">
+              Policy Winners
+            </span>
+
+            <strong id="policyAllocation">
+              0
+            </strong>
+          </div>
+
+
+          <div>
+            <span class="allocation-label">
+              Planning Winners
+            </span>
+
+            <strong id="planningAllocation">
+              0
+            </strong>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <button
+        id="saveDraw"
+        class="primary-btn"
+      >
+        Save & Start Lucky Draw
+      </button>
+
+      <p
+        id="setupMessage"
+        class="eligible-message"
+      ></p>
+
+    </section>
+
+
+    <!-- ==========================================
+         LIVE CONTROL
+    =========================================== -->
+
+    <section
+      id="controlSection"
+      class="card hidden"
+    >
+
+      <p class="eyebrow">
+        Live Draw
+      </p>
+
+      <h2>Lucky Draw Controls</h2>
+
+
+      <div class="allocation-grid">
+
+        <div>
+
+          <span class="allocation-label">
+            Prizes Awarded
+          </span>
+
+          <strong>
+            <span id="prizesAwarded">0</span>
+            /
+            <span id="totalPrizes">0</span>
+          </strong>
+
+        </div>
+
+
+        <div>
+
+          <span class="allocation-label">
+            Policy
+          </span>
+
+          <strong>
+            <span id="policyWon">0</span>
+            /
+            <span id="policyTarget">0</span>
+          </strong>
+
+        </div>
+
+
+        <div>
+
+          <span class="allocation-label">
+            Planning
+          </span>
+
+          <strong>
+            <span id="planningWon">0</span>
+            /
+            <span id="planningTarget">0</span>
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <button
+        id="spinButton"
+        class="spin-btn"
+      >
+        SPIN
+      </button>
+
+
+      <div
+        id="latestWinner"
+        class="winner-announcement hidden"
+      >
+
+        <p class="winner-small">
+          LATEST WINNER
+        </p>
+
+        <h2 id="latestWinnerName"></h2>
+
+        <span id="latestWinnerGroup"></span>
+
+      </div>
+
+
+      <div class="draw-controls">
+
+        <button
+          id="undoButton"
+          class="secondary-btn"
+        >
+          Undo Last Winner
+        </button>
+
+        <button
+          id="resetButton"
+          class="danger-btn"
+        >
+          Reset Draw
+        </button>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FIREBASE -->
+
+  <script
+    src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js">
+  </script>
+
+  <script
+    src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js">
+  </script>
+
+  <script src="admin.js"></script>
+
+</body>
+</html>
