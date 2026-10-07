@@ -18,56 +18,69 @@
 <body>
 
 
-  <!-- =====================================================
-       ADMIN PIN LOCK
-  ====================================================== -->
+ <!-- =====================================================
+     ADMIN PIN LOCK
+====================================================== -->
 
-  <div id="pinLock" class="pin-lock">
+<div id="pinLock" class="pin-lock">
 
-    <div class="pin-card">
+  <div class="pin-card">
 
-      <div class="pokeball"></div>
-
-      <p class="eyebrow">
-        Admin Access
-      </p>
-
-      <h1>
-        Pokémon Lucky Draw
-      </h1>
-
-      <p>
-        Enter the admin PIN to continue.
-      </p>
-
-
-      <input
-        id="pinInput"
-        type="password"
-        inputmode="numeric"
-        maxlength="6"
-        placeholder="Enter PIN"
-        autocomplete="off"
-      />
-
-
-      <button
-        id="pinButton"
-        class="primary-btn"
-      >
-        Unlock
-      </button>
-
-
-      <p
-        id="pinError"
-        class="error-message"
-      ></p>
-
+    <!-- POKEBALL -->
+    <div class="pin-pokeball">
+      <div class="pin-pokeball-centre"></div>
     </div>
+
+
+    <!-- ADMIN LABEL -->
+    <p class="pin-eyebrow">
+      ADMIN ACCESS
+    </p>
+
+
+    <!-- TITLE -->
+    <h1>
+      Enter Admin PIN
+    </h1>
+
+
+    <!-- DESCRIPTION -->
+    <p class="pin-description">
+      Enter the PIN to access the Pokémon Lucky Draw
+      Control Centre.
+    </p>
+
+
+    <!-- PIN INPUT -->
+    <input
+      id="pinInput"
+      class="pin-input"
+      type="password"
+      inputmode="numeric"
+      maxlength="6"
+      placeholder="Enter PIN"
+      autocomplete="off"
+    />
+
+
+    <!-- UNLOCK BUTTON -->
+    <button
+      id="pinButton"
+      class="pin-unlock-btn"
+    >
+      Unlock
+    </button>
+
+
+    <!-- ERROR MESSAGE -->
+    <p
+      id="pinError"
+      class="pin-error"
+    ></p>
 
   </div>
 
+</div>
 
 
   <!-- =====================================================
