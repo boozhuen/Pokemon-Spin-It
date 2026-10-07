@@ -950,13 +950,111 @@
 
 
 
-  <!-- =====================================================
-       ADMIN JS
-  ====================================================== -->
+ <!-- =====================================================
+     ADMIN PIN LOGIC
+====================================================== -->
 
-  <script src="admin.js"></script>
+<script>
 
+  const ADMIN_PIN = "1211";
+
+  const pinLock =
+    document.getElementById("pinLock");
+
+  const adminContent =
+    document.getElementById("adminContent");
+
+  const pinInput =
+    document.getElementById("pinInput");
+
+  const pinButton =
+    document.getElementById("pinButton");
+
+  const pinError =
+    document.getElementById("pinError");
+
+
+  function unlockAdmin() {
+
+    const enteredPin =
+      pinInput.value.trim();
+
+
+    if (enteredPin === ADMIN_PIN) {
+
+      pinError.textContent = "";
+
+      pinLock.classList.add(
+        "pin-hidden"
+      );
+
+      adminContent.classList.remove(
+        "hidden"
+      );
+
+      sessionStorage.setItem(
+        "pokemonAdminUnlocked",
+        "true"
+      );
+
+    } else {
+
+      pinError.textContent =
+        "Incorrect PIN. Please try again.";
+
+      pinInput.value = "";
+
+      pinInput.focus();
+
+    }
+
+  }
+
+
+  pinButton.addEventListener(
+    "click",
+    unlockAdmin
+  );
+
+
+  pinInput.addEventListener(
+    "keydown",
+    function(event) {
+
+      if (event.key === "Enter") {
+
+        event.preventDefault();
+
+        unlockAdmin();
+
+      }
+
+    }
+  );
+
+
+  if (
+    sessionStorage.getItem(
+      "pokemonAdminUnlocked"
+    ) === "true"
+  ) {
+
+    pinLock.classList.add(
+      "pin-hidden"
+    );
+
+    adminContent.classList.remove(
+      "hidden"
+    );
+
+  }
+
+</script>
+
+
+<!-- MAIN ADMIN JAVASCRIPT -->
+
+<script src="admin.js"></script>
 
 </body>
-
 </html>
