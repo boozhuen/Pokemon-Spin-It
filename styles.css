@@ -758,13 +758,13 @@ button:disabled {
   background:
     radial-gradient(
       circle at 85% 85%,
-      rgba(198, 219, 207, 0.65) 0%,
-      rgba(255, 252, 237, 0) 32%
+      rgba(198, 219, 207, 0.55) 0%,
+      rgba(255, 252, 237, 0) 35%
     ),
     linear-gradient(
       135deg,
       #fffdf3 0%,
-      #fffbed 55%,
+      #fffbed 60%,
       #f7f4e8 100%
     );
 
@@ -777,11 +777,13 @@ button:disabled {
 ========================================================= */
 
 .broadcast-shell {
-  width: min(760px, 92%);
+  width: min(900px, 92%);
 
   margin: 0 auto;
 
-  padding: 22px 0 55px;
+  padding: 28px 0 60px;
+
+  text-align: center;
 }
 
 
@@ -792,10 +794,11 @@ button:disabled {
 .broadcast-hero {
   position: relative;
 
+  width: 100%;
+
   overflow: hidden;
 
-  padding:
-    30px 35px 26px;
+  padding: 30px 40px 28px;
 
   border-radius: 22px;
 
@@ -831,19 +834,18 @@ button:disabled {
 ========================================================= */
 
 .broadcast-pokeball {
-  width: 58px;
-  height: 58px;
+  width: 62px;
+  height: 62px;
 
-  margin:
-    3px auto 13px;
+  margin: 3px auto 14px;
 
   border-width: 5px;
 }
 
 
 .broadcast-pokeball::after {
-  width: 17px;
-  height: 17px;
+  width: 18px;
+  height: 18px;
 
   border-width: 4px;
 }
@@ -854,40 +856,50 @@ button:disabled {
 ========================================================= */
 
 .broadcast-eyebrow {
-  margin:
-    0 0 15px;
+  display: block;
+
+  width: 100%;
+
+  margin: 0 0 13px;
 
   color: #ed1c24;
 
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 900;
 
-  letter-spacing: 1.8px;
+  letter-spacing: 2px;
+
+  text-align: center;
 
   text-transform: uppercase;
 }
 
 
 /* =========================================================
-   TITLE
+   MAIN TITLE
 ========================================================= */
 
 .broadcast-hero h1 {
-  margin:
-    0 0 9px;
+  display: block;
+
+  width: 100%;
+
+  margin: 0 0 10px;
 
   color: #24538d;
 
   font-size:
     clamp(
-      38px,
+      42px,
       5vw,
-      52px
+      58px
     );
 
   font-weight: 800;
 
   line-height: 1.1;
+
+  text-align: center;
 }
 
 
@@ -896,12 +908,19 @@ button:disabled {
 ========================================================= */
 
 .broadcast-subtitle {
-  margin:
-    0 0 15px;
+  display: block;
+
+  width: 100%;
+
+  margin: 0 0 16px;
 
   color: #697386;
 
-  font-size: 15px;
+  font-size: 17px;
+
+  line-height: 1.5;
+
+  text-align: center;
 }
 
 
@@ -912,8 +931,9 @@ button:disabled {
 .broadcast-status {
   display: inline-block;
 
-  padding:
-    7px 15px;
+  margin: 0 auto;
+
+  padding: 9px 18px;
 
   border-radius: 999px;
 
@@ -921,8 +941,10 @@ button:disabled {
 
   color: #687386;
 
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 600;
+
+  text-align: center;
 }
 
 
@@ -931,14 +953,17 @@ button:disabled {
 ========================================================= */
 
 .broadcast-wheel-card {
-  margin-top: 20px;
+  width: 100%;
 
-  padding:
-    25px 28px 32px;
+  margin-top: 22px;
+
+  padding: 28px 30px 38px;
 
   border-radius: 22px;
 
   background: #ffffff;
+
+  text-align: center;
 
   box-shadow:
     0 18px 45px
@@ -951,22 +976,25 @@ button:disabled {
 ========================================================= */
 
 .wheel-card-heading {
-  margin-bottom: 20px;
+  width: 100%;
+
+  margin: 0 auto 24px;
 
   text-align: center;
 }
 
 
 .wheel-card-heading p {
-  margin:
-    0 0 5px;
+  margin: 0 0 7px;
 
   color: #ed1c24;
 
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 900;
 
   letter-spacing: 2px;
+
+  text-align: center;
 
   text-transform: uppercase;
 }
@@ -977,8 +1005,12 @@ button:disabled {
 
   color: #252525;
 
-  font-size: 21px;
+  font-size: 26px;
   font-weight: 800;
+
+  line-height: 1.3;
+
+  text-align: center;
 }
 
 
@@ -989,19 +1021,20 @@ button:disabled {
 .broadcast-wheel-card .wheel-area {
   position: relative;
 
-  width:
-    min(
-      570px,
-      72vw
-    );
+  /*
+     THIS CONTROLS THE WHEEL SIZE.
+     Change 450px if you want it
+     slightly bigger/smaller.
+  */
 
-  margin:
-    25px auto 0;
+  width: min(450px, 70vw);
+
+  margin: 32px auto 0;
 }
 
 
 /* =========================================================
-   WHEEL
+   WHEEL CANVAS
 ========================================================= */
 
 #wheelCanvas {
@@ -1010,17 +1043,14 @@ button:disabled {
   width: 100%;
   height: auto;
 
+  margin: 0 auto;
+
   border-radius: 50%;
 
   filter:
     drop-shadow(
       0 12px 20px
-      rgba(
-        31,
-        41,
-        55,
-        0.16
-      )
+      rgba(31, 41, 55, 0.16)
     );
 }
 
@@ -1032,7 +1062,7 @@ button:disabled {
 .broadcast-wheel-card .pointer {
   position: absolute;
 
-  top: -18px;
+  top: -19px;
   left: 50%;
 
   z-index: 10;
@@ -1067,12 +1097,13 @@ button:disabled {
 .broadcast-winner {
   position: relative;
 
+  width: 100%;
+
   overflow: hidden;
 
-  margin-top: 20px;
+  margin-top: 22px;
 
-  padding:
-    28px 30px;
+  padding: 30px;
 
   border-radius: 22px;
 
@@ -1104,40 +1135,41 @@ button:disabled {
 
 
 .broadcast-winner .winner-small {
-  margin:
-    0 0 7px;
+  margin: 0 0 8px;
 
   color: #d99a00;
 
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 900;
 
   letter-spacing: 2px;
+
+  text-align: center;
 }
 
 
 .broadcast-winner h2 {
-  margin:
-    0 0 13px;
+  margin: 0 0 14px;
 
   color: #24538d;
 
   font-size:
     clamp(
-      36px,
+      40px,
       6vw,
-      52px
+      58px
     );
 
   font-weight: 800;
+
+  text-align: center;
 }
 
 
 .broadcast-winner span {
   display: inline-block;
 
-  padding:
-    7px 18px;
+  padding: 8px 20px;
 
   border-radius: 999px;
 
@@ -1145,7 +1177,7 @@ button:disabled {
 
   color: #687386;
 
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 700;
 }
 
@@ -1157,12 +1189,13 @@ button:disabled {
 .broadcast-complete {
   position: relative;
 
+  width: 100%;
+
   overflow: hidden;
 
-  margin-top: 20px;
+  margin-top: 22px;
 
-  padding:
-    28px 30px;
+  padding: 30px;
 
   border-radius: 22px;
 
@@ -1192,15 +1225,16 @@ button:disabled {
 
 
 .complete-label {
-  margin:
-    0 0 8px;
+  margin: 0 0 8px;
 
   color: #347fc1;
 
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 900;
 
   letter-spacing: 1.5px;
+
+  text-align: center;
 }
 
 
@@ -1209,7 +1243,9 @@ button:disabled {
 
   color: #24538d;
 
-  font-size: 25px;
+  font-size: 27px;
+
+  text-align: center;
 }
 
 
@@ -1222,15 +1258,27 @@ button:disabled {
   .broadcast-shell {
     width: 94%;
 
-    padding-top: 16px;
+    padding-top: 18px;
+  }
+
+
+  .broadcast-hero {
+    padding:
+      28px 25px 26px;
+  }
+
+
+  .broadcast-wheel-card {
+    padding:
+      26px 20px 34px;
   }
 
 
   .broadcast-wheel-card .wheel-area {
     width:
       min(
-        580px,
-        78vw
+        430px,
+        72vw
       );
   }
 
@@ -1250,14 +1298,24 @@ button:disabled {
 
   .broadcast-hero {
     padding:
-      28px 20px 24px;
+      26px 18px 23px;
 
     border-radius: 19px;
   }
 
 
   .broadcast-hero h1 {
-    font-size: 34px;
+    font-size: 35px;
+  }
+
+
+  .broadcast-eyebrow {
+    font-size: 11px;
+  }
+
+
+  .broadcast-subtitle {
+    font-size: 15px;
   }
 
 
@@ -1269,25 +1327,25 @@ button:disabled {
 
   .broadcast-wheel-card {
     padding:
-      23px 12px 25px;
+      24px 12px 28px;
 
     border-radius: 19px;
   }
 
 
   .wheel-card-heading h2 {
-    font-size: 18px;
+    font-size: 21px;
   }
 
 
   .broadcast-wheel-card .wheel-area {
-    width: 82vw;
+    width: min(360px, 80vw);
   }
 
 
   .broadcast-winner {
     padding:
-      25px 20px;
+      26px 18px;
   }
 
 }
