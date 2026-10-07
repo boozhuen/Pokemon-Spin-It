@@ -1,4 +1,94 @@
 /* =========================================================
+   ADMIN PIN
+========================================================= */
+
+const ADMIN_PIN = "1211";
+
+const pinLock =
+  document.getElementById("pinLock");
+
+const adminContent =
+  document.getElementById("adminContent");
+
+const pinInput =
+  document.getElementById("pinInput");
+
+const pinButton =
+  document.getElementById("pinButton");
+
+const pinError =
+  document.getElementById("pinError");
+
+
+function unlockAdmin() {
+
+  const enteredPin =
+    pinInput.value.trim();
+
+
+  if (enteredPin === ADMIN_PIN) {
+
+    pinLock.classList.add("hidden");
+
+    adminContent.classList.remove("hidden");
+
+    sessionStorage.setItem(
+      "pokemonAdminUnlocked",
+      "true"
+    );
+
+  } else {
+
+    pinError.textContent =
+      "Incorrect PIN. Please try again.";
+
+    pinInput.value = "";
+
+    pinInput.focus();
+
+  }
+
+}
+
+
+pinButton.addEventListener(
+  "click",
+  unlockAdmin
+);
+
+
+pinInput.addEventListener(
+  "keydown",
+  event => {
+
+    if (event.key === "Enter") {
+
+      unlockAdmin();
+
+    }
+
+  }
+);
+
+
+/*
+   Keep admin unlocked when refreshing
+   the page in the same browser tab.
+*/
+
+if (
+  sessionStorage.getItem(
+    "pokemonAdminUnlocked"
+  ) === "true"
+) {
+
+  pinLock.classList.add("hidden");
+
+  adminContent.classList.remove("hidden");
+
+}
+
+/* =========================================================
    FIREBASE
 ========================================================= */
 
