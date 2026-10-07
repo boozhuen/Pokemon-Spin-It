@@ -25,115 +25,138 @@
   <main class="broadcast-shell">
 
 
-    <!-- MAIN EVENT CARD -->
+    <!-- =====================================================
+         HEADER CARD
+    ====================================================== -->
 
-    <section class="broadcast-stage">
+    <section class="broadcast-hero">
 
-
-      <!-- RED TOP ACCENT -->
-
-      <div class="broadcast-red-line"></div>
-
-
-      <!-- HEADER -->
-
-      <header class="broadcast-header">
-
-        <div
-          class="pokeball broadcast-pokeball"
-          aria-hidden="true"
-        ></div>
+      <div
+        class="pokeball broadcast-pokeball"
+        aria-hidden="true"
+      ></div>
 
 
-        <p class="broadcast-eyebrow">
-          END-OF-YEAR FUNCTION
-        </p>
+      <p class="broadcast-eyebrow">
+        P&amp;P YEAR END FUNCTION 2026
+      </p>
 
 
-        <h1>
-          Pokémon Lucky Draw
-        </h1>
+      <h1>
+        Pokémon Lucky Draw
+      </h1>
 
 
-        <div
-          id="prizeStatus"
-          class="broadcast-status"
-        >
-          Waiting for the draw to begin...
-        </div>
-
-      </header>
+      <p class="broadcast-subtitle">
+        May the luckiest Trainer win!
+      </p>
 
 
-
-      <!-- WHEEL -->
-
-      <section class="broadcast-wheel-panel">
-
-        <div class="wheel-area">
-
-          <div class="pointer"></div>
-
-          <canvas
-            id="wheelCanvas"
-            width="700"
-            height="700"
-          ></canvas>
-
-        </div>
-
-      </section>
-
-
-
-      <!-- WINNER -->
-
-      <section
-        id="winnerAnnouncement"
-        class="broadcast-winner hidden"
+      <div
+        id="prizeStatus"
+        class="broadcast-status"
       >
+        Waiting for the draw to begin...
+      </div>
 
-        <p class="winner-small">
-          🎉 WINNER 🎉
-        </p>
-
-        <h2 id="winnerName"></h2>
-
-        <span id="winnerGroup"></span>
-
-      </section>
+    </section>
 
 
 
-      <!-- DRAW COMPLETE -->
+    <!-- =====================================================
+         WHEEL CARD
+    ====================================================== -->
 
-      <section
-        id="drawComplete"
-        class="broadcast-complete hidden"
-      >
+    <section class="broadcast-wheel-card">
+
+
+      <div class="wheel-card-heading">
 
         <p>
-          ⭐ LUCKY DRAW COMPLETE ⭐
+          LUCKY DRAW
         </p>
 
         <h2>
-          Congratulations to all our winners!
+          Who will be our next winner?
         </h2>
 
-      </section>
+      </div>
+
+
+      <div class="wheel-area">
+
+        <div class="pointer"></div>
+
+
+        <canvas
+          id="wheelCanvas"
+          width="700"
+          height="700"
+        ></canvas>
+
+      </div>
 
 
     </section>
+
+
+
+    <!-- =====================================================
+         WINNER
+    ====================================================== -->
+
+    <section
+      id="winnerAnnouncement"
+      class="broadcast-winner hidden"
+    >
+
+      <p class="winner-small">
+        🎉 WINNER 🎉
+      </p>
+
+
+      <h2 id="winnerName"></h2>
+
+
+      <span id="winnerGroup"></span>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         DRAW COMPLETE
+    ====================================================== -->
+
+    <section
+      id="drawComplete"
+      class="broadcast-complete hidden"
+    >
+
+      <p class="complete-label">
+        ⭐ LUCKY DRAW COMPLETE ⭐
+      </p>
+
+
+      <h2>
+        Congratulations to all our winners!
+      </h2>
+
+    </section>
+
 
   </main>
 
 
 
-  <!-- FIREBASE -->
+  <!-- =====================================================
+       FIREBASE
+  ====================================================== -->
 
   <script
     src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"
   ></script>
+
 
   <script
     src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"
@@ -141,6 +164,7 @@
 
 
   <script src="script.js"></script>
+
 
 </body>
 
