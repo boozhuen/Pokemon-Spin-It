@@ -1,25 +1,51 @@
 /* =========================================================
-   GENERAL
+   GLOBAL
 ========================================================= */
 
 * {
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
   background:
     linear-gradient(
       135deg,
       #eef5ff,
       #fff7e6
     );
+
   color: #1f2937;
 }
 
+button,
+input,
+textarea {
+  font-family: inherit;
+}
+
+.hidden {
+  display: none !important;
+}
+
+
+/* =========================================================
+   MAIN PAGE
+========================================================= */
+
 .page-shell {
   width: min(1100px, 92%);
+
   margin: 40px auto 80px;
 }
 
@@ -29,13 +55,17 @@ body {
 ========================================================= */
 
 .card {
-  background: white;
+  background: #ffffff;
+
   border-radius: 24px;
+
   padding: 32px;
+
   margin-bottom: 24px;
 
   box-shadow:
-    0 12px 35px rgba(0, 0, 0, 0.08);
+    0 12px 35px
+    rgba(0, 0, 0, 0.08);
 }
 
 
@@ -44,30 +74,47 @@ body {
 ========================================================= */
 
 .hero-card {
-  text-align: center;
   position: relative;
+
   overflow: hidden;
+
+  text-align: center;
 }
 
 .hero-card h1 {
   margin: 10px 0;
-  font-size: clamp(32px, 5vw, 54px);
+
   color: #2563eb;
+
+  font-size:
+    clamp(
+      32px,
+      5vw,
+      54px
+    );
 }
 
 .subtitle {
-  color: #6b7280;
   max-width: 650px;
+
   margin: auto;
+
+  color: #6b7280;
+
   line-height: 1.6;
 }
 
 .eyebrow {
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 12px;
-  font-weight: bold;
+  margin-bottom: 8px;
+
   color: #ef4444;
+
+  font-size: 12px;
+  font-weight: 800;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
 }
 
 
@@ -76,26 +123,26 @@ body {
 ========================================================= */
 
 .pokeball {
+  position: relative;
+
   width: 70px;
   height: 70px;
 
   margin: 0 auto 15px;
 
+  border: 6px solid #222222;
   border-radius: 50%;
-  border: 6px solid #222;
 
   background:
     linear-gradient(
       to bottom,
       #ef4444 0%,
       #ef4444 45%,
-      #222 45%,
-      #222 55%,
-      white 55%,
-      white 100%
+      #222222 45%,
+      #222222 55%,
+      #ffffff 55%,
+      #ffffff 100%
     );
-
-  position: relative;
 }
 
 .pokeball::after {
@@ -103,17 +150,42 @@ body {
 
   position: absolute;
 
-  width: 20px;
-  height: 20px;
-
-  border-radius: 50%;
-  background: white;
-  border: 5px solid #222;
-
   top: 50%;
   left: 50%;
 
-  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+
+  border: 5px solid #222222;
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    );
+}
+
+
+/* =========================================================
+   SECTION HEADINGS
+========================================================= */
+
+.section-heading {
+  display: flex;
+
+  align-items: center;
+
+  justify-content:
+    space-between;
+
+  gap: 15px;
+}
+
+.section-heading h3 {
+  margin-bottom: 12px;
 }
 
 
@@ -123,44 +195,72 @@ body {
 
 .name-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+
+  grid-template-columns:
+    1fr 1fr;
+
   gap: 24px;
 }
 
-.section-heading {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.name-box {
+  min-width: 0;
 }
 
 .count-badge {
-  background: #eff6ff;
-  color: #2563eb;
   padding: 6px 12px;
+
   border-radius: 999px;
+
+  background: #eff6ff;
+
+  color: #2563eb;
+
   font-size: 13px;
-  font-weight: bold;
+  font-weight: 700;
+
+  white-space: nowrap;
 }
 
 textarea {
   width: 100%;
   height: 280px;
 
-  resize: vertical;
-
-  border: 2px solid #e5e7eb;
-  border-radius: 16px;
-
   padding: 16px;
 
+  resize: vertical;
+
+  border:
+    2px solid
+    #e5e7eb;
+
+  border-radius: 16px;
+
+  background: #ffffff;
+
+  color: #1f2937;
+
   font-size: 15px;
-  font-family: inherit;
+
+  line-height: 1.5;
 
   outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 textarea:focus {
   border-color: #3b82f6;
+
+  box-shadow:
+    0 0 0 4px
+    rgba(
+      59,
+      130,
+      246,
+      0.1
+    );
 }
 
 
@@ -174,8 +274,10 @@ textarea:focus {
 
 .prize-input-area label {
   display: block;
-  font-weight: bold;
+
   margin-bottom: 10px;
+
+  font-weight: 700;
 }
 
 .prize-input-area input {
@@ -183,25 +285,51 @@ textarea:focus {
 
   padding: 12px 15px;
 
-  border: 2px solid #e5e7eb;
+  border:
+    2px solid
+    #e5e7eb;
+
   border-radius: 12px;
 
+  background: #ffffff;
+
+  color: #1f2937;
+
   font-size: 16px;
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.prize-input-area input:focus {
+  border-color: #3b82f6;
+
+  box-shadow:
+    0 0 0 4px
+    rgba(
+      59,
+      130,
+      246,
+      0.1
+    );
 }
 
 
 /* =========================================================
-   ALLOCATION
+   ALLOCATION / ADMIN STATISTICS
 ========================================================= */
 
 .allocation-card {
-  background: #f8fafc;
-
-  border-radius: 18px;
+  margin: 28px 0;
 
   padding: 22px;
 
-  margin: 28px 0;
+  border-radius: 18px;
+
+  background: #f8fafc;
 }
 
 .allocation-card h3 {
@@ -212,17 +340,22 @@ textarea:focus {
   display: grid;
 
   grid-template-columns:
-    repeat(5, 1fr);
+    repeat(
+      5,
+      1fr
+    );
 
   gap: 12px;
 }
 
 .allocation-grid > div {
-  background: white;
+  min-width: 0;
+
+  padding: 15px;
 
   border-radius: 14px;
 
-  padding: 15px;
+  background: #ffffff;
 
   text-align: center;
 }
@@ -230,42 +363,53 @@ textarea:focus {
 .allocation-label {
   display: block;
 
+  margin-bottom: 7px;
+
   color: #6b7280;
 
   font-size: 12px;
-
-  margin-bottom: 7px;
 }
 
 .allocation-grid strong {
+  color: #1f2937;
+
   font-size: 22px;
 }
 
 
 /* =========================================================
-   BUTTONS
+   GENERAL BUTTONS
 ========================================================= */
 
 button {
   border: none;
-  cursor: pointer;
 
-  font-family: inherit;
+  cursor: pointer;
 
   transition:
     transform 0.15s ease,
-    opacity 0.15s ease;
+    opacity 0.15s ease,
+    background 0.15s ease,
+    box-shadow 0.15s ease;
 }
 
 button:hover {
-  transform: translateY(-2px);
+  transform:
+    translateY(-2px);
 }
 
 button:disabled {
   cursor: not-allowed;
+
   opacity: 0.5;
+
   transform: none;
 }
+
+
+/* =========================================================
+   PRIMARY BUTTON
+========================================================= */
 
 .primary-btn {
   width: 100%;
@@ -275,130 +419,137 @@ button:disabled {
   border-radius: 14px;
 
   background: #2563eb;
-  color: white;
+
+  color: #ffffff;
 
   font-size: 17px;
-  font-weight: bold;
+  font-weight: 800;
+
+  box-shadow:
+    0 8px 18px
+    rgba(
+      37,
+      99,
+      235,
+      0.18
+    );
 }
+
+.primary-btn:hover {
+  background: #1d4ed8;
+}
+
+
+/* =========================================================
+   SPIN BUTTON
+========================================================= */
 
 .spin-btn {
   display: block;
 
-  margin: 20px auto;
+  min-width: 200px;
 
-  padding: 18px 60px;
+  margin: 30px auto 20px;
+
+  padding:
+    18px 60px;
 
   border-radius: 999px;
 
   background: #ef4444;
-  color: white;
+
+  color: #ffffff;
 
   font-size: 24px;
   font-weight: 900;
 
   box-shadow:
-    0 8px 0 #b91c1c;
+    0 8px 0
+    #b91c1c;
+}
+
+.spin-btn:hover {
+  background: #dc2626;
 }
 
 .spin-btn:active {
-  transform: translateY(5px);
+  transform:
+    translateY(5px);
+
   box-shadow:
-    0 3px 0 #b91c1c;
+    0 3px 0
+    #b91c1c;
 }
+
+
+/* =========================================================
+   SECONDARY / DANGER BUTTONS
+========================================================= */
 
 .secondary-btn,
 .danger-btn {
-  padding: 12px 20px;
+  padding:
+    12px 20px;
+
   border-radius: 10px;
-  font-weight: bold;
+
+  font-weight: 700;
 }
 
 .secondary-btn {
   background: #e5e7eb;
+
+  color: #1f2937;
+}
+
+.secondary-btn:hover {
+  background: #d1d5db;
 }
 
 .danger-btn {
   background: #fee2e2;
+
   color: #b91c1c;
 }
 
+.danger-btn:hover {
+  background: #fecaca;
+}
+
 
 /* =========================================================
-   DRAW HEADER
+   DRAW CONTROLS
 ========================================================= */
 
-.draw-header {
+.draw-controls {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
 
-.prize-counter {
-  text-align: right;
-}
+  justify-content: center;
 
-.prize-counter span {
-  display: block;
-  color: #6b7280;
-}
+  flex-wrap: wrap;
 
-.prize-counter strong {
-  font-size: 28px;
-}
+  gap: 12px;
 
-
-
-/* =========================================================
-   WHEEL
-========================================================= */
-
-.wheel-area {
-  width: min(650px, 100%);
-
-  margin: 35px auto 20px;
-
-  position: relative;
-}
-
-#wheelCanvas {
-  width: 100%;
-  height: auto;
-
-  display: block;
-
-  border-radius: 50%;
-
-  filter:
-    drop-shadow(
-      0 15px 20px rgba(0, 0, 0, 0.15)
-    );
-}
-
-.pointer {
-  position: absolute;
-
-  top: -8px;
-  left: 50%;
-
-  transform: translateX(-50%);
-
-  z-index: 10;
-
-  width: 0;
-  height: 0;
-
-  border-left: 20px solid transparent;
-  border-right: 20px solid transparent;
-  border-top: 42px solid #111827;
+  margin-top: 30px;
 }
 
 
 /* =========================================================
-   WINNER ANNOUNCEMENT
+   WINNER ANNOUNCEMENT - ADMIN
 ========================================================= */
 
 .winner-announcement {
-  text-align: center;
+  max-width: 600px;
+
+  margin: 30px auto;
+
+  padding: 25px;
+
+  border:
+    3px solid
+    #facc15;
+
+  border-radius: 20px;
 
   background:
     linear-gradient(
@@ -407,135 +558,340 @@ button:disabled {
       #ffedd5
     );
 
-  border: 3px solid #facc15;
-
-  padding: 25px;
-
-  border-radius: 20px;
-
-  margin: 30px auto;
-
-  max-width: 600px;
+  text-align: center;
 }
 
 .winner-small {
-  font-weight: bold;
+  margin:
+    0 0 8px;
+
+  font-weight: 800;
+
   letter-spacing: 2px;
 }
 
 .winner-announcement h2 {
-  font-size: 38px;
   margin: 10px;
+
+  font-size: 38px;
 }
 
 .winner-announcement span {
   display: inline-block;
 
-  background: white;
-
-  padding: 7px 15px;
+  padding:
+    7px 15px;
 
   border-radius: 999px;
 
-  font-weight: bold;
+  background: #ffffff;
+
+  font-weight: 700;
 }
 
 
 /* =========================================================
-   WINNERS LIST
+   STATUS / ERRORS
 ========================================================= */
-
-.winners-list {
-  display: grid;
-  gap: 10px;
-}
-
-.winner-row {
-  display: flex;
-
-  justify-content: space-between;
-  align-items: center;
-
-  background: #f8fafc;
-
-  padding: 15px 18px;
-
-  border-radius: 12px;
-}
-
-.winner-number {
-  font-weight: bold;
-  color: #2563eb;
-}
-
-.winner-info {
-  flex: 1;
-  margin-left: 15px;
-}
-
-.winner-group {
-  color: #6b7280;
-  font-size: 13px;
-}
-
-
-/* =========================================================
-   OTHER
-========================================================= */
-
-.draw-controls {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-
-  margin-top: 30px;
-}
 
 .error-message {
   color: #dc2626;
-  font-weight: bold;
+
+  font-weight: 700;
 }
 
 .eligible-message {
-  text-align: center;
-  color: #6b7280;
-}
+  margin-top: 15px;
 
-.hidden {
-  display: none !important;
+  color: #6b7280;
+
+  text-align: center;
 }
 
 
 /* =========================================================
-   MOBILE
+   ADMIN PIN LOCK
 ========================================================= */
 
-@media (max-width: 750px) {
+.pin-lock {
+  position: fixed;
 
-  .name-grid {
-    grid-template-columns: 1fr;
-  }
+  inset: 0;
 
-  .allocation-grid {
-    grid-template-columns: 1fr 1fr;
-  }
+  z-index: 9999;
 
-  .draw-header {
-    align-items: flex-start;
-  }
+  display: flex;
 
-  .card {
-    padding: 22px;
-  }
+  align-items: center;
 
+  justify-content: center;
+
+  padding: 24px;
+
+  background:
+    radial-gradient(
+      circle at top,
+      #ffffff 0%,
+      #f3f7ff 45%,
+      #e8f0ff 100%
+    );
 }
 
+
 /* =========================================================
-   BROADCAST SCREEN
+   PIN LOGIN CARD
+========================================================= */
+
+.pin-card {
+  width: 100%;
+
+  max-width: 430px;
+
+  padding:
+    42px 38px;
+
+  border:
+    1px solid
+    #eef2f7;
+
+  border-radius: 28px;
+
+  background: #ffffff;
+
+  text-align: center;
+
+  box-shadow:
+    0 25px 70px
+    rgba(
+      0,
+      0,
+      0,
+      0.14
+    );
+}
+
+
+/* =========================================================
+   PIN POKEBALL
+========================================================= */
+
+.pin-card .pokeball {
+  width: 76px;
+  height: 76px;
+
+  margin:
+    0 auto 24px;
+}
+
+
+/* =========================================================
+   PIN EYEBROW
+========================================================= */
+
+.pin-card .eyebrow {
+  margin:
+    0 0 10px;
+
+  color: #ef4444;
+
+  font-size: 12px;
+  font-weight: 800;
+
+  letter-spacing: 2.5px;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   PIN TITLE
+========================================================= */
+
+.pin-card h1 {
+  margin:
+    0 0 12px;
+
+  color: #1f2937;
+
+  font-size: 32px;
+  font-weight: 800;
+
+  line-height: 1.2;
+}
+
+
+/* =========================================================
+   PIN DESCRIPTION
+========================================================= */
+
+.pin-card > p:not(.eyebrow):not(.error-message) {
+  margin:
+    0 0 25px;
+
+  color: #6b7280;
+
+  font-size: 15px;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   PIN INPUT
+========================================================= */
+
+.pin-card input {
+  display: block;
+
+  width: 100%;
+  height: 58px;
+
+  margin:
+    0 0 14px;
+
+  padding:
+    0 18px;
+
+  border:
+    2px solid
+    #e5e7eb;
+
+  border-radius: 14px;
+
+  background: #f9fafb;
+
+  color: #111827;
+
+  font-size: 22px;
+  font-weight: 700;
+
+  text-align: center;
+
+  letter-spacing: 10px;
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.pin-card input::placeholder {
+  color: #9ca3af;
+
+  font-size: 15px;
+  font-weight: 400;
+
+  letter-spacing: normal;
+}
+
+.pin-card input:focus {
+  border-color: #3b82f6;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 0 0 4px
+    rgba(
+      59,
+      130,
+      246,
+      0.12
+    );
+}
+
+
+/* =========================================================
+   PIN UNLOCK BUTTON
+========================================================= */
+
+.pin-card .primary-btn {
+  display: block;
+
+  width: 100%;
+  height: 56px;
+
+  margin: 0;
+
+  padding: 0 20px;
+
+  border: none;
+  border-radius: 14px;
+
+  background: #2563eb;
+
+  color: #ffffff;
+
+  font-size: 16px;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 8px 20px
+    rgba(
+      37,
+      99,
+      235,
+      0.22
+    );
+
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background 0.15s ease;
+}
+
+.pin-card .primary-btn:hover {
+  background: #1d4ed8;
+
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 12px 25px
+    rgba(
+      37,
+      99,
+      235,
+      0.28
+    );
+}
+
+.pin-card .primary-btn:active {
+  transform:
+    translateY(0);
+}
+
+
+/* =========================================================
+   PIN ERROR
+========================================================= */
+
+.pin-card .error-message {
+  min-height: 20px;
+
+  margin:
+    14px 0 0;
+
+  color: #dc2626;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   BROADCAST PAGE
 ========================================================= */
 
 .broadcast-page {
   min-height: 100vh;
+
+  overflow-x: hidden;
 
   background:
     radial-gradient(
@@ -544,28 +900,41 @@ button:disabled {
       #f5f9ff 45%,
       #eef4ff 100%
     );
-
-  overflow-x: hidden;
 }
 
-
 .broadcast-shell {
-  width: min(1100px, 96%);
+  width:
+    min(
+      1100px,
+      96%
+    );
 
   margin: 0 auto;
 
   padding:
-    25px 0
-    60px;
+    25px 0 60px;
 
   text-align: center;
 }
 
 
+/* =========================================================
+   BROADCAST HEADER
+========================================================= */
+
+.broadcast-header {
+  text-align: center;
+}
+
+.broadcast-header .pokeball {
+  margin-bottom: 12px;
+}
+
 .broadcast-header h1 {
   margin:
-    5px 0
-    8px;
+    5px 0 8px;
+
+  color: #2563eb;
 
   font-size:
     clamp(
@@ -573,27 +942,44 @@ button:disabled {
       5vw,
       64px
     );
-
-  color: #2563eb;
 }
-
 
 .broadcast-header p {
+  margin:
+    8px 0;
+
   color: #6b7280;
+
+  font-size: 17px;
 }
 
+
+/* =========================================================
+   BROADCAST WHEEL
+========================================================= */
 
 .broadcast-wheel {
   display: flex;
 
-  justify-content: center;
-
   align-items: center;
+
+  justify-content: center;
 }
 
+.wheel-area {
+  position: relative;
+
+  width:
+    min(
+      650px,
+      100%
+    );
+
+  margin:
+    35px auto 20px;
+}
 
 .broadcast-wheel .wheel-area {
-
   width:
     min(
       680px,
@@ -605,9 +991,64 @@ button:disabled {
     25px auto;
 }
 
+#wheelCanvas {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  border-radius: 50%;
+
+  filter:
+    drop-shadow(
+      0 15px 20px
+      rgba(
+        0,
+        0,
+        0,
+        0.15
+      )
+    );
+}
+
+
+/* =========================================================
+   WHEEL POINTER
+========================================================= */
+
+.pointer {
+  position: absolute;
+
+  top: -8px;
+  left: 50%;
+
+  z-index: 10;
+
+  width: 0;
+  height: 0;
+
+  border-top:
+    42px solid
+    #111827;
+
+  border-right:
+    20px solid
+    transparent;
+
+  border-left:
+    20px solid
+    transparent;
+
+  transform:
+    translateX(-50%);
+}
+
+
+/* =========================================================
+   BROADCAST WINNER
+========================================================= */
 
 .broadcast-winner {
-
   max-width: 700px;
 
   margin:
@@ -616,6 +1057,12 @@ button:disabled {
   padding:
     25px 35px;
 
+  border:
+    4px solid
+    #facc15;
+
+  border-radius: 25px;
+
   background:
     linear-gradient(
       135deg,
@@ -623,11 +1070,7 @@ button:disabled {
       #ffedd5
     );
 
-  border:
-    4px solid #facc15;
-
-  border-radius:
-    25px;
+  text-align: center;
 
   box-shadow:
     0 15px 40px
@@ -639,11 +1082,17 @@ button:disabled {
     );
 }
 
+.broadcast-winner .winner-small {
+  margin-bottom: 8px;
+
+  color: #92400e;
+}
 
 .broadcast-winner h2 {
-
   margin:
     5px 0 15px;
+
+  color: #1f2937;
 
   font-size:
     clamp(
@@ -653,95 +1102,144 @@ button:disabled {
     );
 }
 
-
 .broadcast-winner span {
-
-  display:
-    inline-block;
+  display: inline-block;
 
   padding:
     8px 20px;
 
-  background:
-    white;
+  border-radius: 999px;
 
-  border-radius:
-    999px;
+  background: #ffffff;
 
-  font-weight:
-    bold;
+  color: #1f2937;
 
-  font-size:
-    18px;
+  font-size: 18px;
+  font-weight: 700;
 }
 
 
 /* =========================================================
-   ADMIN PIN LOCK
+   TABLET
 ========================================================= */
 
-.pin-lock {
-  min-height: 100vh;
+@media (max-width: 850px) {
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  .allocation-grid {
+    grid-template-columns:
+      repeat(
+        2,
+        1fr
+      );
+  }
 
-  padding: 20px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #eef5ff,
-      #fff7e6
-    );
 }
 
-.pin-card {
-  width: min(420px, 100%);
 
-  background: white;
+/* =========================================================
+   MOBILE
+========================================================= */
 
-  padding: 40px;
+@media (max-width: 750px) {
 
-  border-radius: 24px;
+  .page-shell {
+    width: 94%;
 
-  text-align: center;
+    margin:
+      20px auto 50px;
+  }
 
-  box-shadow:
-    0 15px 40px
-    rgba(0, 0, 0, 0.12);
+
+  .card {
+    padding: 22px;
+
+    border-radius: 20px;
+  }
+
+
+  .name-grid {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .allocation-grid {
+    grid-template-columns:
+      1fr 1fr;
+  }
+
+
+  .draw-controls {
+    flex-direction: column;
+  }
+
+
+  .draw-controls button {
+    width: 100%;
+  }
+
+
+  .broadcast-shell {
+    width: 96%;
+
+    padding-top: 18px;
+  }
+
+
+  .broadcast-wheel .wheel-area {
+    width:
+      min(
+        92vw,
+        620px
+      );
+  }
+
 }
 
-.pin-card h1 {
-  color: #2563eb;
-  margin-bottom: 10px;
-}
 
-.pin-card input {
-  width: 100%;
+/* =========================================================
+   SMALL MOBILE / PIN SCREEN
+========================================================= */
 
-  padding: 15px;
+@media (max-width: 500px) {
 
-  margin: 20px 0 12px;
+  .pin-lock {
+    padding: 16px;
+  }
 
-  border: 2px solid #e5e7eb;
 
-  border-radius: 12px;
+  .pin-card {
+    padding:
+      34px 24px;
 
-  font-size: 22px;
+    border-radius: 22px;
+  }
 
-  text-align: center;
 
-  letter-spacing: 8px;
+  .pin-card h1 {
+    font-size: 27px;
+  }
 
-  outline: none;
-}
 
-.pin-card input:focus {
-  border-color: #3b82f6;
-}
+  .pin-card .pokeball {
+    width: 68px;
+    height: 68px;
+  }
 
-.pin-card .primary-btn {
-  width: 100%;
+
+  .allocation-grid {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .spin-btn {
+    width: 100%;
+
+    min-width: 0;
+
+    padding:
+      17px 25px;
+  }
+
 }
