@@ -25,103 +25,120 @@
   <main class="broadcast-shell">
 
 
-    <!-- ==========================================
-         HEADER
-    =========================================== -->
+    <!-- MAIN EVENT CARD -->
 
-    <section class="broadcast-header">
-
-      <div class="pokeball"></div>
-
-      <p class="eyebrow">
-        End-of-Year Function
-      </p>
-
-      <h1>
-        Pokémon Lucky Draw
-      </h1>
-
-      <p id="prizeStatus">
-        Waiting for the draw to begin...
-      </p>
-
-    </section>
+    <section class="broadcast-stage">
 
 
+      <!-- RED TOP ACCENT -->
 
-    <!-- ==========================================
-         WHEEL
-    =========================================== -->
+      <div class="broadcast-red-line"></div>
 
-    <section class="broadcast-wheel">
 
-      <div class="wheel-area">
+      <!-- HEADER -->
 
-        <div class="pointer"></div>
+      <header class="broadcast-header">
 
-        <canvas
-          id="wheelCanvas"
-          width="700"
-          height="700"
-        ></canvas>
+        <div
+          class="pokeball broadcast-pokeball"
+          aria-hidden="true"
+        ></div>
 
-      </div>
 
-    </section>
+        <p class="broadcast-eyebrow">
+          END-OF-YEAR FUNCTION
+        </p>
+
+
+        <h1>
+          Pokémon Lucky Draw
+        </h1>
+
+
+        <div
+          id="prizeStatus"
+          class="broadcast-status"
+        >
+          Waiting for the draw to begin...
+        </div>
+
+      </header>
 
 
 
-    <!-- ==========================================
-         WINNER
-    =========================================== -->
+      <!-- WHEEL -->
 
-    <section
-      id="winnerAnnouncement"
-      class="broadcast-winner hidden"
-    >
+      <section class="broadcast-wheel-panel">
 
-      <p class="winner-small">
-        🎉 WINNER 🎉
-      </p>
+        <div class="wheel-area">
 
-      <h2 id="winnerName"></h2>
+          <div class="pointer"></div>
 
-      <span id="winnerGroup"></span>
+          <canvas
+            id="wheelCanvas"
+            width="700"
+            height="700"
+          ></canvas>
 
-    </section>
+        </div>
+
+      </section>
 
 
-    <!-- ==========================================
-         COMPLETED
-    =========================================== -->
 
-    <section
-      id="drawComplete"
-      class="broadcast-winner hidden"
-    >
+      <!-- WINNER -->
 
-      <p class="winner-small">
-        ⭐ LUCKY DRAW COMPLETE ⭐
-      </p>
+      <section
+        id="winnerAnnouncement"
+        class="broadcast-winner hidden"
+      >
 
-      <h2>
-        Congratulations to all our winners!
-      </h2>
+        <p class="winner-small">
+          🎉 WINNER 🎉
+        </p>
+
+        <h2 id="winnerName"></h2>
+
+        <span id="winnerGroup"></span>
+
+      </section>
+
+
+
+      <!-- DRAW COMPLETE -->
+
+      <section
+        id="drawComplete"
+        class="broadcast-complete hidden"
+      >
+
+        <p>
+          ⭐ LUCKY DRAW COMPLETE ⭐
+        </p>
+
+        <h2>
+          Congratulations to all our winners!
+        </h2>
+
+      </section>
+
 
     </section>
 
   </main>
 
 
+
   <!-- FIREBASE -->
 
   <script
-    src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js">
-  </script>
+    src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"
+  ></script>
 
   <script
-    src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js">
-  </script>
+    src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"
+  ></script>
+
 
   <script src="script.js"></script>
 
