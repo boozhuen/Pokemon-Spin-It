@@ -3,24 +3,12 @@
 ========================================================= */
 
 const firebaseConfig = {
-
-  apiKey: "YOUR_API_KEY",
-
-  authDomain:
-    "YOUR_PROJECT.firebaseapp.com",
-
-  projectId:
-    "YOUR_PROJECT_ID",
-
-  storageBucket:
-    "YOUR_PROJECT.firebasestorage.app",
-
-  messagingSenderId:
-    "YOUR_SENDER_ID",
-
-  appId:
-    "YOUR_APP_ID"
-
+  apiKey: "AIzaSyD7sHpbgESBLvdegJLgUmN-AYzC1UMzMXw",
+  authDomain: "pokemon-spin-it.firebaseapp.com",
+  projectId: "pokemon-spin-it",
+  storageBucket: "pokemon-spin-it.firebasestorage.app",
+  messagingSenderId: "173320668039",
+  appId: "1:173320668039:web:0817a1af6afb06e7cf4922"
 };
 
 
