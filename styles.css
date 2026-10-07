@@ -752,25 +752,23 @@ button:disabled {
 ========================================================= */
 
 .broadcast-page {
-  min-height:
-    100vh;
-
-  margin:
-    0;
-
-  overflow-x:
-    hidden;
+  min-height: 100vh;
+  margin: 0;
 
   background:
     radial-gradient(
-      circle at 50% 30%,
-      #fffdf5 0%,
-      #fffbed 45%,
-      #f8f3e3 100%
+      circle at 85% 85%,
+      rgba(198, 219, 207, 0.65) 0%,
+      rgba(255, 252, 237, 0) 32%
+    ),
+    linear-gradient(
+      135deg,
+      #fffdf3 0%,
+      #fffbed 55%,
+      #f7f4e8 100%
     );
 
-  color:
-    #1f2937;
+  color: #252525;
 }
 
 
@@ -779,217 +777,226 @@ button:disabled {
 ========================================================= */
 
 .broadcast-shell {
-  width:
-    min(
-      1180px,
-      94%
-    );
+  width: min(760px, 92%);
 
-  margin:
-    0 auto;
+  margin: 0 auto;
 
-  padding:
-    32px 0 55px;
+  padding: 22px 0 55px;
 }
 
 
 /* =========================================================
-   MAIN STAGE CARD
+   HEADER CARD
 ========================================================= */
 
-.broadcast-stage {
-  position:
-    relative;
+.broadcast-hero {
+  position: relative;
 
-  overflow:
-    hidden;
+  overflow: hidden;
 
   padding:
-    32px 40px 42px;
+    30px 35px 26px;
 
-  border-radius:
-    28px;
+  border-radius: 22px;
 
-  background:
-    #ffffff;
+  background: #ffffff;
+
+  text-align: center;
 
   box-shadow:
-    0 25px 65px
-    rgba(
-      55,
-      65,
-      81,
-      0.12
-    );
+    0 18px 45px
+    rgba(55, 65, 81, 0.12);
+}
+
+
+/* RED TOP ACCENT */
+
+.broadcast-hero::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 8px;
+
+  background: #ed1c24;
 }
 
 
 /* =========================================================
-   RED TOP ACCENT
+   POKEBALL
 ========================================================= */
-
-.broadcast-red-line {
-  position:
-    absolute;
-
-  top:
-    0;
-
-  left:
-    0;
-
-  width:
-    100%;
-
-  height:
-    9px;
-
-  background:
-    #ed1c24;
-}
-
-
-/* =========================================================
-   BROADCAST HEADER
-========================================================= */
-
-.broadcast-header {
-  padding-top:
-    5px;
-
-  text-align:
-    center;
-}
-
 
 .broadcast-pokeball {
-  width:
-    60px;
-
-  height:
-    60px;
+  width: 58px;
+  height: 58px;
 
   margin:
-    0 auto 14px;
+    3px auto 13px;
 
-  border-width:
-    5px;
+  border-width: 5px;
 }
 
 
 .broadcast-pokeball::after {
-  width:
-    18px;
+  width: 17px;
+  height: 17px;
 
-  height:
-    18px;
-
-  border-width:
-    4px;
+  border-width: 4px;
 }
 
+
+/* =========================================================
+   EVENT LABEL
+========================================================= */
 
 .broadcast-eyebrow {
   margin:
-    0 0 9px;
+    0 0 15px;
 
-  color:
-    #ed1c24;
+  color: #ed1c24;
 
-  font-size:
-    12px;
+  font-size: 12px;
+  font-weight: 900;
 
-  font-weight:
-    800;
+  letter-spacing: 1.8px;
 
-  letter-spacing:
-    2.5px;
-
-  text-transform:
-    uppercase;
+  text-transform: uppercase;
 }
 
 
-.broadcast-header h1 {
-  margin:
-    0 0 13px;
+/* =========================================================
+   TITLE
+========================================================= */
 
-  color:
-    #19447c;
+.broadcast-hero h1 {
+  margin:
+    0 0 9px;
+
+  color: #24538d;
 
   font-size:
     clamp(
       38px,
       5vw,
-      58px
+      52px
     );
 
-  font-weight:
-    800;
+  font-weight: 800;
 
-  line-height:
-    1.1;
+  line-height: 1.1;
 }
 
 
 /* =========================================================
-   PRIZE STATUS
+   SUBTITLE
+========================================================= */
+
+.broadcast-subtitle {
+  margin:
+    0 0 15px;
+
+  color: #697386;
+
+  font-size: 15px;
+}
+
+
+/* =========================================================
+   STATUS
 ========================================================= */
 
 .broadcast-status {
-  display:
-    inline-block;
-
-  margin:
-    2px auto 0;
+  display: inline-block;
 
   padding:
-    9px 18px;
+    7px 15px;
 
-  border-radius:
-    999px;
+  border-radius: 999px;
 
-  background:
-    #f1f6fb;
+  background: #f1f6fb;
 
-  color:
-    #687386;
+  color: #687386;
 
-  font-size:
-    14px;
-
-  font-weight:
-    600;
+  font-size: 13px;
+  font-weight: 600;
 }
 
 
 /* =========================================================
-   WHEEL PANEL
+   WHEEL CARD
 ========================================================= */
 
-.broadcast-wheel-panel {
-  max-width:
-    800px;
-
-  margin:
-    24px auto 0;
+.broadcast-wheel-card {
+  margin-top: 20px;
 
   padding:
-    28px;
+    25px 28px 32px;
 
-  border:
-    1px solid
-    #edf0f4;
+  border-radius: 22px;
 
-  border-radius:
-    24px;
+  background: #ffffff;
 
-  background:
-    linear-gradient(
-      145deg,
-      #fbfcfe,
-      #f5f8fc
+  box-shadow:
+    0 18px 45px
+    rgba(55, 65, 81, 0.12);
+}
+
+
+/* =========================================================
+   WHEEL CARD HEADING
+========================================================= */
+
+.wheel-card-heading {
+  margin-bottom: 20px;
+
+  text-align: center;
+}
+
+
+.wheel-card-heading p {
+  margin:
+    0 0 5px;
+
+  color: #ed1c24;
+
+  font-size: 11px;
+  font-weight: 900;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+}
+
+
+.wheel-card-heading h2 {
+  margin: 0;
+
+  color: #252525;
+
+  font-size: 21px;
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   WHEEL AREA
+========================================================= */
+
+.broadcast-wheel-card .wheel-area {
+  position: relative;
+
+  width:
+    min(
+      570px,
+      72vw
     );
+
+  margin:
+    25px auto 0;
 }
 
 
@@ -997,43 +1004,22 @@ button:disabled {
    WHEEL
 ========================================================= */
 
-.broadcast-wheel-panel .wheel-area {
-  position:
-    relative;
-
-  width:
-    min(
-      640px,
-      65vh,
-      78vw
-    );
-
-  margin:
-    0 auto;
-}
-
-
 #wheelCanvas {
-  display:
-    block;
+  display: block;
 
-  width:
-    100%;
+  width: 100%;
+  height: auto;
 
-  height:
-    auto;
-
-  border-radius:
-    50%;
+  border-radius: 50%;
 
   filter:
     drop-shadow(
-      0 15px 25px
+      0 12px 20px
       rgba(
         31,
         41,
         55,
-        0.14
+        0.16
       )
     );
 }
@@ -1043,122 +1029,77 @@ button:disabled {
    POINTER
 ========================================================= */
 
-.broadcast-wheel-panel .pointer {
-  position:
-    absolute;
+.broadcast-wheel-card .pointer {
+  position: absolute;
 
-  top:
-    -15px;
+  top: -18px;
+  left: 50%;
 
-  left:
-    50%;
+  z-index: 10;
 
-  z-index:
-    10;
-
-  width:
-    0;
-
-  height:
-    0;
+  width: 0;
+  height: 0;
 
   border-left:
-    18px solid
-    transparent;
+    17px solid transparent;
 
   border-right:
-    18px solid
-    transparent;
+    17px solid transparent;
 
   border-top:
-    38px solid
-    #19447c;
+    37px solid #252525;
 
   transform:
     translateX(-50%);
 
   filter:
     drop-shadow(
-      0 4px 3px
-      rgba(
-        0,
-        0,
-        0,
-        0.12
-      )
+      0 3px 2px
+      rgba(0, 0, 0, 0.15)
     );
 }
 
 
 /* =========================================================
-   BROADCAST WINNER
+   WINNER CARD
 ========================================================= */
 
 .broadcast-winner {
-  position:
-    relative;
+  position: relative;
 
-  max-width:
-    720px;
+  overflow: hidden;
 
-  margin:
-    25px auto 0;
+  margin-top: 20px;
 
   padding:
-    25px 30px;
+    28px 30px;
 
-  overflow:
-    hidden;
+  border-radius: 22px;
 
-  border:
-    1px solid
-    #f3d784;
+  background: #ffffff;
 
-  border-radius:
-    20px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #fffdf1,
-      #fff6d7
-    );
-
-  text-align:
-    center;
+  text-align: center;
 
   box-shadow:
-    0 14px 30px
-    rgba(
-      55,
-      65,
-      81,
-      0.08
-    );
+    0 18px 45px
+    rgba(55, 65, 81, 0.12);
 }
 
 
+/* GOLD TOP LINE */
+
 .broadcast-winner::before {
-  content:
-    "";
+  content: "";
 
-  position:
-    absolute;
+  position: absolute;
 
-  top:
-    0;
+  top: 0;
+  left: 0;
 
-  left:
-    0;
+  width: 100%;
+  height: 8px;
 
-  width:
-    100%;
-
-  height:
-    6px;
-
-  background:
-    #f4c430;
+  background: #f4c430;
 }
 
 
@@ -1166,69 +1107,46 @@ button:disabled {
   margin:
     0 0 7px;
 
-  color:
-    #a16207;
+  color: #d99a00;
 
-  font-size:
-    12px;
+  font-size: 12px;
+  font-weight: 900;
 
-  font-weight:
-    800;
-
-  letter-spacing:
-    2px;
+  letter-spacing: 2px;
 }
 
 
 .broadcast-winner h2 {
   margin:
-    0 0 12px;
+    0 0 13px;
 
-  color:
-    #19447c;
+  color: #24538d;
 
   font-size:
     clamp(
-      34px,
-      5vw,
-      54px
+      36px,
+      6vw,
+      52px
     );
 
-  font-weight:
-    800;
+  font-weight: 800;
 }
 
 
 .broadcast-winner span {
-  display:
-    inline-block;
+  display: inline-block;
 
   padding:
     7px 18px;
 
-  border-radius:
-    999px;
+  border-radius: 999px;
 
-  background:
-    #ffffff;
+  background: #f1f6fb;
 
-  color:
-    #687386;
+  color: #687386;
 
-  font-size:
-    14px;
-
-  font-weight:
-    700;
-
-  box-shadow:
-    0 3px 10px
-    rgba(
-      0,
-      0,
-      0,
-      0.05
-    );
+  font-size: 14px;
+  font-weight: 700;
 }
 
 
@@ -1237,53 +1155,61 @@ button:disabled {
 ========================================================= */
 
 .broadcast-complete {
-  max-width:
-    720px;
+  position: relative;
 
-  margin:
-    25px auto 0;
+  overflow: hidden;
+
+  margin-top: 20px;
 
   padding:
-    24px 30px;
+    28px 30px;
 
-  border-radius:
-    20px;
+  border-radius: 22px;
 
-  background:
-    #f1f6fb;
+  background: #ffffff;
 
-  text-align:
-    center;
+  text-align: center;
+
+  box-shadow:
+    0 18px 45px
+    rgba(55, 65, 81, 0.12);
 }
 
 
-.broadcast-complete p {
+.broadcast-complete::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 8px;
+
+  background: #347fc1;
+}
+
+
+.complete-label {
   margin:
     0 0 8px;
 
-  color:
-    #347fc1;
+  color: #347fc1;
 
-  font-size:
-    12px;
+  font-size: 12px;
+  font-weight: 900;
 
-  font-weight:
-    800;
-
-  letter-spacing:
-    2px;
+  letter-spacing: 1.5px;
 }
 
 
 .broadcast-complete h2 {
-  margin:
-    0;
+  margin: 0;
 
-  color:
-    #19447c;
+  color: #24538d;
 
-  font-size:
-    24px;
+  font-size: 25px;
 }
 
 
@@ -1291,43 +1217,20 @@ button:disabled {
    TABLET
 ========================================================= */
 
-@media (max-width: 850px) {
-
-  .allocation-grid {
-    grid-template-columns:
-      repeat(
-        2,
-        1fr
-      );
-  }
-
+@media (max-width: 800px) {
 
   .broadcast-shell {
-    width:
-      96%;
+    width: 94%;
 
-    padding:
-      20px 0 35px;
+    padding-top: 16px;
   }
 
 
-  .broadcast-stage {
-    padding:
-      28px 22px 32px;
-  }
-
-
-  .broadcast-wheel-panel {
-    padding:
-      20px;
-  }
-
-
-  .broadcast-wheel-panel .wheel-area {
+  .broadcast-wheel-card .wheel-area {
     width:
       min(
-        82vw,
-        620px
+        580px,
+        78vw
       );
   }
 
@@ -1338,126 +1241,53 @@ button:disabled {
    MOBILE
 ========================================================= */
 
-@media (max-width: 750px) {
-
-  .page-shell {
-    width:
-      94%;
-
-    margin:
-      20px auto 50px;
-  }
-
-
-  .card {
-    padding:
-      22px;
-
-    border-radius:
-      20px;
-  }
-
-
-  .name-grid {
-    grid-template-columns:
-      1fr;
-  }
-
-
-  .allocation-grid {
-    grid-template-columns:
-      1fr 1fr;
-  }
-
-
-  .draw-controls {
-    flex-direction:
-      column;
-  }
-
-
-  .draw-controls button {
-    width:
-      100%;
-  }
-
-}
-
-
-/* =========================================================
-   BROADCAST MOBILE
-========================================================= */
-
 @media (max-width: 550px) {
 
-  .broadcast-stage {
-    border-radius:
-      20px;
+  .broadcast-shell {
+    width: 94%;
   }
 
 
-  .broadcast-header h1 {
-    font-size:
-      35px;
+  .broadcast-hero {
+    padding:
+      28px 20px 24px;
+
+    border-radius: 19px;
+  }
+
+
+  .broadcast-hero h1 {
+    font-size: 34px;
   }
 
 
   .broadcast-pokeball {
-    width:
-      52px;
-
-    height:
-      52px;
+    width: 52px;
+    height: 52px;
   }
 
 
-  .broadcast-wheel-panel {
-    margin-top:
-      20px;
-
+  .broadcast-wheel-card {
     padding:
-      20px 10px 12px;
+      23px 12px 25px;
 
-    border-radius:
-      18px;
+    border-radius: 19px;
   }
 
 
-  .broadcast-wheel-panel .wheel-area {
-    width:
-      84vw;
+  .wheel-card-heading h2 {
+    font-size: 18px;
+  }
+
+
+  .broadcast-wheel-card .wheel-area {
+    width: 82vw;
   }
 
 
   .broadcast-winner {
     padding:
-      22px 18px;
-  }
-
-}
-
-
-/* =========================================================
-   SMALL MOBILE
-========================================================= */
-
-@media (max-width: 500px) {
-
-  .allocation-grid {
-    grid-template-columns:
-      1fr;
-  }
-
-
-  .spin-btn {
-    width:
-      100%;
-
-    min-width:
-      0;
-
-    padding:
-      17px 25px;
+      25px 20px;
   }
 
 }
