@@ -77,18 +77,6 @@ const prizesAwardedDisplay =
 const totalPrizesDisplay =
   document.getElementById("totalPrizes");
 
-const policyWonDisplay =
-  document.getElementById("policyWon");
-
-const planningWonDisplay =
-  document.getElementById("planningWon");
-
-const policyTargetDisplay =
-  document.getElementById("policyTarget");
-
-const planningTargetDisplay =
-  document.getElementById("planningTarget");
-
 const eligibleMessage =
   document.getElementById("eligibleMessage");
 
@@ -369,13 +357,6 @@ function startDraw() {
 
   totalPrizesDisplay.textContent =
     totalPrizes;
-
-  policyTargetDisplay.textContent =
-    policyTarget;
-
-  planningTargetDisplay.textContent =
-    planningTarget;
-
 
   drawSection.classList.remove("hidden");
 
@@ -860,13 +841,6 @@ function updateDraw() {
 
   prizesAwardedDisplay.textContent =
     winners.length;
-
-  policyWonDisplay.textContent =
-    policyWon;
-
-  planningWonDisplay.textContent =
-    planningWon;
-
 
   const eligible =
     getEligibleParticipants();
