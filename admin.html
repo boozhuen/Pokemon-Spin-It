@@ -1,48 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
 
   <title>Pokémon Lucky Draw Admin</title>
 
   <link rel="stylesheet" href="styles.css" />
 </head>
 
+
 <body>
 
-  <main class="page-shell">
 
-    <section class="card hero-card">
+  <!-- =====================================================
+       ADMIN PIN LOCK
+  ====================================================== -->
+
+  <div id="pinLock" class="pin-lock">
+
+    <div class="pin-card">
+
       <div class="pokeball"></div>
 
-      <p class="eyebrow">Admin Control Centre</p>
+      <p class="eyebrow">
+        Admin Access
+      </p>
 
-      <h1>Pokémon Lucky Draw</h1>
+      <h1>
+        Pokémon Lucky Draw
+      </h1>
+
+      <p>
+        Enter the admin PIN to continue.
+      </p>
+
+
+      <input
+        id="pinInput"
+        type="password"
+        inputmode="numeric"
+        maxlength="6"
+        placeholder="Enter PIN"
+        autocomplete="off"
+      />
+
+
+      <button
+        id="pinButton"
+        class="primary-btn"
+      >
+        Unlock
+      </button>
+
+
+      <p
+        id="pinError"
+        class="error-message"
+      ></p>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- =====================================================
+       ADMIN CONTENT
+
+       Hidden until the correct PIN is entered.
+  ====================================================== -->
+
+  <main
+    id="adminContent"
+    class="page-shell hidden"
+  >
+
+
+    <!-- =================================================
+         HEADER
+    ================================================== -->
+
+    <section class="card hero-card">
+
+      <div class="pokeball"></div>
+
+      <p class="eyebrow">
+        Admin Control Centre
+      </p>
+
+      <h1>
+        Pokémon Lucky Draw
+      </h1>
 
       <p class="subtitle">
         Set up participants and control the lucky draw.
       </p>
+
     </section>
 
 
-    <!-- ==========================================
-         SETUP
-    =========================================== -->
+
+    <!-- =================================================
+         PARTICIPANT SETUP
+    ================================================== -->
 
     <section class="card">
 
-      <h2>Participant Setup</h2>
+      <h2>
+        Participant Setup
+      </h2>
+
 
       <div class="name-grid">
 
-        <!-- POLICY -->
+
+        <!-- =============================================
+             POLICY
+        ============================================== -->
 
         <div class="name-box">
 
           <div class="section-heading">
 
-            <h3>Policy</h3>
+            <h3>
+              Policy
+            </h3>
 
             <span
               id="policyCount"
@@ -53,21 +141,27 @@
 
           </div>
 
+
           <textarea
             id="policyNames"
-            placeholder="Enter one name per line"
+            placeholder="Enter one name per line&#10;&#10;Example:&#10;Ash Ketchum&#10;Misty&#10;Brock"
           ></textarea>
 
         </div>
 
 
-        <!-- PLANNING -->
+
+        <!-- =============================================
+             PLANNING
+        ============================================== -->
 
         <div class="name-box">
 
           <div class="section-heading">
 
-            <h3>Planning</h3>
+            <h3>
+              Planning
+            </h3>
 
             <span
               id="planningCount"
@@ -78,9 +172,10 @@
 
           </div>
 
+
           <textarea
             id="planningNames"
-            placeholder="Enter one name per line"
+            placeholder="Enter one name per line&#10;&#10;Example:&#10;Professor Oak&#10;Serena&#10;Dawn"
           ></textarea>
 
         </div>
@@ -88,13 +183,17 @@
       </div>
 
 
-      <!-- PRIZES -->
+
+      <!-- =============================================
+           NUMBER OF PRIZES
+      ============================================== -->
 
       <div class="prize-input-area">
 
         <label for="prizeCount">
           Number of available prizes
         </label>
+
 
         <input
           id="prizeCount"
@@ -106,15 +205,25 @@
       </div>
 
 
-      <!-- ALLOCATION -->
+
+      <!-- =============================================
+           CALCULATED ALLOCATION
+      ============================================== -->
 
       <div class="allocation-card">
 
-        <h3>Calculated Allocation</h3>
+        <h3>
+          Calculated Allocation
+        </h3>
+
 
         <div class="allocation-grid">
 
+
+          <!-- TOTAL PARTICIPANTS -->
+
           <div>
+
             <span class="allocation-label">
               Total Participants
             </span>
@@ -122,10 +231,15 @@
             <strong id="totalParticipants">
               0
             </strong>
+
           </div>
 
 
+
+          <!-- POLICY RATIO -->
+
           <div>
+
             <span class="allocation-label">
               Policy Ratio
             </span>
@@ -133,10 +247,15 @@
             <strong id="policyRatio">
               0%
             </strong>
+
           </div>
 
 
+
+          <!-- PLANNING RATIO -->
+
           <div>
+
             <span class="allocation-label">
               Planning Ratio
             </span>
@@ -144,10 +263,15 @@
             <strong id="planningRatio">
               0%
             </strong>
+
           </div>
 
 
+
+          <!-- POLICY WINNERS -->
+
           <div>
+
             <span class="allocation-label">
               Policy Winners
             </span>
@@ -155,10 +279,15 @@
             <strong id="policyAllocation">
               0
             </strong>
+
           </div>
 
 
+
+          <!-- PLANNING WINNERS -->
+
           <div>
+
             <span class="allocation-label">
               Planning Winners
             </span>
@@ -166,6 +295,7 @@
             <strong id="planningAllocation">
               0
             </strong>
+
           </div>
 
         </div>
@@ -173,12 +303,18 @@
       </div>
 
 
+
+      <!-- =============================================
+           SAVE DRAW
+      ============================================== -->
+
       <button
         id="saveDraw"
         class="primary-btn"
       >
         Save & Start Lucky Draw
       </button>
+
 
       <p
         id="setupMessage"
@@ -188,9 +324,10 @@
     </section>
 
 
-    <!-- ==========================================
-         LIVE CONTROL
-    =========================================== -->
+
+    <!-- =================================================
+         LIVE DRAW CONTROL
+    ================================================== -->
 
     <section
       id="controlSection"
@@ -201,10 +338,20 @@
         Live Draw
       </p>
 
-      <h2>Lucky Draw Controls</h2>
+      <h2>
+        Lucky Draw Controls
+      </h2>
 
+
+
+      <!-- =============================================
+           DRAW STATUS
+      ============================================== -->
 
       <div class="allocation-grid">
+
+
+        <!-- PRIZES AWARDED -->
 
         <div>
 
@@ -213,13 +360,24 @@
           </span>
 
           <strong>
-            <span id="prizesAwarded">0</span>
+
+            <span id="prizesAwarded">
+              0
+            </span>
+
             /
-            <span id="totalPrizes">0</span>
+
+            <span id="totalPrizes">
+              0
+            </span>
+
           </strong>
 
         </div>
 
+
+
+        <!-- POLICY STATUS -->
 
         <div>
 
@@ -228,13 +386,24 @@
           </span>
 
           <strong>
-            <span id="policyWon">0</span>
+
+            <span id="policyWon">
+              0
+            </span>
+
             /
-            <span id="policyTarget">0</span>
+
+            <span id="policyTarget">
+              0
+            </span>
+
           </strong>
 
         </div>
 
+
+
+        <!-- PLANNING STATUS -->
 
         <div>
 
@@ -243,15 +412,28 @@
           </span>
 
           <strong>
-            <span id="planningWon">0</span>
+
+            <span id="planningWon">
+              0
+            </span>
+
             /
-            <span id="planningTarget">0</span>
+
+            <span id="planningTarget">
+              0
+            </span>
+
           </strong>
 
         </div>
 
       </div>
 
+
+
+      <!-- =============================================
+           SPIN BUTTON
+      ============================================== -->
 
       <button
         id="spinButton"
@@ -261,23 +443,38 @@
       </button>
 
 
+
+      <!-- =============================================
+           LATEST WINNER
+      ============================================== -->
+
       <div
         id="latestWinner"
         class="winner-announcement hidden"
       >
 
         <p class="winner-small">
-          LATEST WINNER
+          🎉 LATEST WINNER 🎉
         </p>
 
-        <h2 id="latestWinnerName"></h2>
 
-        <span id="latestWinnerGroup"></span>
+        <h2 id="latestWinnerName">
+        </h2>
+
+
+        <span id="latestWinnerGroup">
+        </span>
 
       </div>
 
 
+
+      <!-- =============================================
+           ADMIN CONTROLS
+      ============================================== -->
+
       <div class="draw-controls">
+
 
         <button
           id="undoButton"
@@ -286,6 +483,7 @@
           Undo Last Winner
         </button>
 
+
         <button
           id="resetButton"
           class="danger-btn"
@@ -293,24 +491,38 @@
           Reset Draw
         </button>
 
+
       </div>
 
     </section>
 
+
   </main>
 
 
-  <!-- FIREBASE -->
+
+  <!-- =====================================================
+       FIREBASE
+  ====================================================== -->
 
   <script
-    src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js">
-  </script>
+    src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"
+  ></script>
+
 
   <script
-    src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js">
-  </script>
+    src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"
+  ></script>
+
+
+
+  <!-- =====================================================
+       ADMIN JAVASCRIPT
+  ====================================================== -->
 
   <script src="admin.js"></script>
 
+
 </body>
+
 </html>
