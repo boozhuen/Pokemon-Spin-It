@@ -1,0 +1,560 @@
+/* =========================================================
+   GENERAL
+========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background:
+    linear-gradient(
+      135deg,
+      #eef5ff,
+      #fff7e6
+    );
+  color: #1f2937;
+}
+
+.page-shell {
+  width: min(1100px, 92%);
+  margin: 40px auto 80px;
+}
+
+
+/* =========================================================
+   CARDS
+========================================================= */
+
+.card {
+  background: white;
+  border-radius: 24px;
+  padding: 32px;
+  margin-bottom: 24px;
+
+  box-shadow:
+    0 12px 35px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero-card {
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-card h1 {
+  margin: 10px 0;
+  font-size: clamp(32px, 5vw, 54px);
+  color: #2563eb;
+}
+
+.subtitle {
+  color: #6b7280;
+  max-width: 650px;
+  margin: auto;
+  line-height: 1.6;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #ef4444;
+}
+
+
+/* =========================================================
+   POKEBALL
+========================================================= */
+
+.pokeball {
+  width: 70px;
+  height: 70px;
+
+  margin: 0 auto 15px;
+
+  border-radius: 50%;
+  border: 6px solid #222;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #ef4444 0%,
+      #ef4444 45%,
+      #222 45%,
+      #222 55%,
+      white 55%,
+      white 100%
+    );
+
+  position: relative;
+}
+
+.pokeball::after {
+  content: "";
+
+  position: absolute;
+
+  width: 20px;
+  height: 20px;
+
+  border-radius: 50%;
+  background: white;
+  border: 5px solid #222;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+}
+
+
+/* =========================================================
+   PARTICIPANT INPUT
+========================================================= */
+
+.name-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.count-badge {
+  background: #eff6ff;
+  color: #2563eb;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+textarea {
+  width: 100%;
+  height: 280px;
+
+  resize: vertical;
+
+  border: 2px solid #e5e7eb;
+  border-radius: 16px;
+
+  padding: 16px;
+
+  font-size: 15px;
+  font-family: inherit;
+
+  outline: none;
+}
+
+textarea:focus {
+  border-color: #3b82f6;
+}
+
+
+/* =========================================================
+   PRIZE INPUT
+========================================================= */
+
+.prize-input-area {
+  margin-top: 28px;
+}
+
+.prize-input-area label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.prize-input-area input {
+  width: 180px;
+
+  padding: 12px 15px;
+
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+
+  font-size: 16px;
+}
+
+
+/* =========================================================
+   ALLOCATION
+========================================================= */
+
+.allocation-card {
+  background: #f8fafc;
+
+  border-radius: 18px;
+
+  padding: 22px;
+
+  margin: 28px 0;
+}
+
+.allocation-card h3 {
+  margin-top: 0;
+}
+
+.allocation-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(5, 1fr);
+
+  gap: 12px;
+}
+
+.allocation-grid > div {
+  background: white;
+
+  border-radius: 14px;
+
+  padding: 15px;
+
+  text-align: center;
+}
+
+.allocation-label {
+  display: block;
+
+  color: #6b7280;
+
+  font-size: 12px;
+
+  margin-bottom: 7px;
+}
+
+.allocation-grid strong {
+  font-size: 22px;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+button {
+  border: none;
+  cursor: pointer;
+
+  font-family: inherit;
+
+  transition:
+    transform 0.15s ease,
+    opacity 0.15s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  transform: none;
+}
+
+.primary-btn {
+  width: 100%;
+
+  padding: 16px;
+
+  border-radius: 14px;
+
+  background: #2563eb;
+  color: white;
+
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.spin-btn {
+  display: block;
+
+  margin: 20px auto;
+
+  padding: 18px 60px;
+
+  border-radius: 999px;
+
+  background: #ef4444;
+  color: white;
+
+  font-size: 24px;
+  font-weight: 900;
+
+  box-shadow:
+    0 8px 0 #b91c1c;
+}
+
+.spin-btn:active {
+  transform: translateY(5px);
+  box-shadow:
+    0 3px 0 #b91c1c;
+}
+
+.secondary-btn,
+.danger-btn {
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.secondary-btn {
+  background: #e5e7eb;
+}
+
+.danger-btn {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+
+/* =========================================================
+   DRAW HEADER
+========================================================= */
+
+.draw-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.prize-counter {
+  text-align: right;
+}
+
+.prize-counter span {
+  display: block;
+  color: #6b7280;
+}
+
+.prize-counter strong {
+  font-size: 28px;
+}
+
+
+/* =========================================================
+   PROGRESS
+========================================================= */
+
+.progress-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+
+  margin: 20px 0;
+}
+
+.progress-box {
+  background: #f8fafc;
+  padding: 18px;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.progress-box span {
+  display: block;
+  color: #6b7280;
+  margin-bottom: 5px;
+}
+
+.progress-box strong {
+  font-size: 24px;
+}
+
+
+/* =========================================================
+   WHEEL
+========================================================= */
+
+.wheel-area {
+  width: min(650px, 100%);
+
+  margin: 35px auto 20px;
+
+  position: relative;
+}
+
+#wheelCanvas {
+  width: 100%;
+  height: auto;
+
+  display: block;
+
+  border-radius: 50%;
+
+  filter:
+    drop-shadow(
+      0 15px 20px rgba(0, 0, 0, 0.15)
+    );
+}
+
+.pointer {
+  position: absolute;
+
+  top: -8px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  z-index: 10;
+
+  width: 0;
+  height: 0;
+
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 42px solid #111827;
+}
+
+
+/* =========================================================
+   WINNER ANNOUNCEMENT
+========================================================= */
+
+.winner-announcement {
+  text-align: center;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff7cc,
+      #ffedd5
+    );
+
+  border: 3px solid #facc15;
+
+  padding: 25px;
+
+  border-radius: 20px;
+
+  margin: 30px auto;
+
+  max-width: 600px;
+}
+
+.winner-small {
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.winner-announcement h2 {
+  font-size: 38px;
+  margin: 10px;
+}
+
+.winner-announcement span {
+  display: inline-block;
+
+  background: white;
+
+  padding: 7px 15px;
+
+  border-radius: 999px;
+
+  font-weight: bold;
+}
+
+
+/* =========================================================
+   WINNERS LIST
+========================================================= */
+
+.winners-list {
+  display: grid;
+  gap: 10px;
+}
+
+.winner-row {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  background: #f8fafc;
+
+  padding: 15px 18px;
+
+  border-radius: 12px;
+}
+
+.winner-number {
+  font-weight: bold;
+  color: #2563eb;
+}
+
+.winner-info {
+  flex: 1;
+  margin-left: 15px;
+}
+
+.winner-group {
+  color: #6b7280;
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   OTHER
+========================================================= */
+
+.draw-controls {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+
+  margin-top: 30px;
+}
+
+.error-message {
+  color: #dc2626;
+  font-weight: bold;
+}
+
+.eligible-message {
+  text-align: center;
+  color: #6b7280;
+}
+
+.hidden {
+  display: none !important;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 750px) {
+
+  .name-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .allocation-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .draw-header {
+    align-items: flex-start;
+  }
+
+  .card {
+    padding: 22px;
+  }
+
+}
