@@ -11,82 +11,531 @@
 
   <title>Pokémon Lucky Draw Admin</title>
 
+  <!-- YOUR NORMAL WEBSITE CSS -->
   <link rel="stylesheet" href="styles.css" />
+
+
+  <!-- =====================================================
+       PIN SCREEN CSS
+       Kept here deliberately so it cannot conflict with
+       your normal styles.css
+  ====================================================== -->
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+
+    /* =====================================================
+       PIN BACKGROUND
+    ====================================================== */
+
+    #pinLock {
+      position: fixed !important;
+
+      top: 0 !important;
+      right: 0 !important;
+      bottom: 0 !important;
+      left: 0 !important;
+
+      z-index: 99999 !important;
+
+      display: flex !important;
+
+      align-items: center !important;
+      justify-content: center !important;
+
+      width: 100vw !important;
+      min-height: 100vh !important;
+
+      padding: 24px !important;
+
+      background:
+        radial-gradient(
+          circle at 50% 40%,
+          #fffdf5 0%,
+          #fffbed 45%,
+          #f8f3e3 100%
+        ) !important;
+
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif !important;
+    }
+
+
+    /* Hide PIN screen after successful login */
+
+    #pinLock.pin-hidden {
+      display: none !important;
+    }
+
+
+    /* =====================================================
+       WHITE LOGIN CARD
+    ====================================================== */
+
+    #pinLock .pin-card {
+      position: relative !important;
+
+      width: 420px !important;
+      max-width: 100% !important;
+
+      padding:
+        36px
+        32px
+        40px !important;
+
+      overflow: hidden !important;
+
+      border-radius: 22px !important;
+
+      background: #ffffff !important;
+
+      text-align: center !important;
+
+      box-shadow:
+        0 25px 65px
+        rgba(55, 65, 81, 0.13) !important;
+    }
+
+
+    /* RED TOP LINE */
+
+    #pinLock .pin-card::before {
+      content: "";
+
+      position: absolute;
+
+      top: 0;
+      left: 0;
+
+      width: 100%;
+      height: 8px;
+
+      background: #ed1c24;
+    }
+
+
+    /* =====================================================
+       POKÉ BALL
+    ====================================================== */
+
+    #pinLock .login-pokeball {
+      position: relative;
+
+      width: 58px;
+      height: 58px;
+
+      margin:
+        4px auto
+        14px;
+
+      overflow: hidden;
+
+      border:
+        4px solid
+        #202124;
+
+      border-radius: 50%;
+
+      background:
+        linear-gradient(
+          to bottom,
+
+          #f04b50 0%,
+          #f04b50 43%,
+
+          #202124 43%,
+          #202124 55%,
+
+          #ffffff 55%,
+          #ffffff 100%
+        );
+    }
+
+
+    #pinLock .login-pokeball::after {
+      content: "";
+
+      position: absolute;
+
+      top: 50%;
+      left: 50%;
+
+      width: 22px;
+      height: 22px;
+
+      border:
+        4px solid
+        #202124;
+
+      border-radius: 50%;
+
+      background: #ffffff;
+
+      transform:
+        translate(
+          -50%,
+          -50%
+        );
+    }
+
+
+    /* =====================================================
+       ADMIN ACCESS
+    ====================================================== */
+
+    #pinLock .pin-label {
+      margin:
+        0 0 10px !important;
+
+      color: #ed1c24 !important;
+
+      font-size: 12px !important;
+      font-weight: 800 !important;
+
+      letter-spacing:
+        2px !important;
+
+      text-transform:
+        uppercase !important;
+    }
+
+
+    /* =====================================================
+       TITLE
+    ====================================================== */
+
+    #pinLock h1 {
+      margin:
+        0 0 18px !important;
+
+      color: #19447c !important;
+
+      font-size: 25px !important;
+      font-weight: 800 !important;
+
+      line-height: 1.2 !important;
+    }
+
+
+    /* =====================================================
+       DESCRIPTION
+    ====================================================== */
+
+    #pinLock .pin-description {
+      max-width: 310px !important;
+
+      margin:
+        0 auto
+        22px !important;
+
+      color: #687386 !important;
+
+      font-size: 15px !important;
+      font-weight: 400 !important;
+
+      line-height: 1.55 !important;
+    }
+
+
+    /* =====================================================
+       INPUT
+    ====================================================== */
+
+    #pinLock #pinInput {
+      display: block !important;
+
+      width: 100% !important;
+      height: 56px !important;
+
+      margin:
+        0 0
+        12px !important;
+
+      padding:
+        0 20px !important;
+
+      border:
+        1px solid
+        #d9dee7 !important;
+
+      border-radius:
+        12px !important;
+
+      background:
+        #ffffff !important;
+
+      color:
+        #374151 !important;
+
+      font-size:
+        20px !important;
+
+      font-weight:
+        500 !important;
+
+      text-align:
+        center !important;
+
+      letter-spacing:
+        8px !important;
+
+      outline:
+        none !important;
+
+      transition:
+        border-color
+        0.2s ease,
+        box-shadow
+        0.2s ease !important;
+    }
+
+
+    #pinLock #pinInput::placeholder {
+      color:
+        #7a8290 !important;
+
+      font-size:
+        18px !important;
+
+      font-weight:
+        400 !important;
+
+      letter-spacing:
+        7px !important;
+    }
+
+
+    #pinLock #pinInput:focus {
+      border-color:
+        #347fc1 !important;
+
+      box-shadow:
+        0 0 0 3px
+        rgba(
+          52,
+          127,
+          193,
+          0.12
+        ) !important;
+    }
+
+
+    /* =====================================================
+       UNLOCK BUTTON
+    ====================================================== */
+
+    #pinLock #pinButton {
+      display: block !important;
+
+      width: 100% !important;
+      height: 48px !important;
+
+      margin: 0 !important;
+
+      padding:
+        0 20px !important;
+
+      border:
+        none !important;
+
+      border-radius:
+        11px !important;
+
+      background:
+        #347fc1 !important;
+
+      color:
+        #ffffff !important;
+
+      font-size:
+        16px !important;
+
+      font-weight:
+        800 !important;
+
+      cursor:
+        pointer !important;
+
+      box-shadow:
+        0 10px 22px
+        rgba(
+          52,
+          127,
+          193,
+          0.22
+        ) !important;
+
+      transition:
+        background
+        0.15s ease,
+        transform
+        0.15s ease,
+        box-shadow
+        0.15s ease !important;
+    }
+
+
+    #pinLock #pinButton:hover {
+      background:
+        #286eae !important;
+
+      transform:
+        translateY(-1px) !important;
+
+      box-shadow:
+        0 12px 25px
+        rgba(
+          52,
+          127,
+          193,
+          0.28
+        ) !important;
+    }
+
+
+    /* =====================================================
+       ERROR
+    ====================================================== */
+
+    #pinLock #pinError {
+      min-height: 18px !important;
+
+      margin:
+        12px 0
+        -10px !important;
+
+      color:
+        #dc2626 !important;
+
+      font-size:
+        13px !important;
+
+      font-weight:
+        600 !important;
+
+      text-align:
+        center !important;
+    }
+
+
+    /* =====================================================
+       MOBILE
+    ====================================================== */
+
+    @media (max-width: 500px) {
+
+      #pinLock {
+        padding:
+          18px !important;
+      }
+
+
+      #pinLock .pin-card {
+        width:
+          100% !important;
+
+        padding:
+          32px
+          24px
+          36px !important;
+      }
+
+
+      #pinLock h1 {
+        font-size:
+          23px !important;
+      }
+
+    }
+
+  </style>
+
 </head>
 
 
 <body>
 
 
- <!-- =====================================================
-     ADMIN PIN LOCK
-====================================================== -->
+  <!-- =====================================================
+       ADMIN PIN SCREEN
+  ====================================================== -->
 
-<div id="pinLock" class="pin-lock">
+  <div id="pinLock">
 
-  <div class="pin-card">
+    <div class="pin-card">
 
-    <!-- POKEBALL -->
-    <div class="pin-pokeball">
-      <div class="pin-pokeball-centre"></div>
+
+      <!-- POKÉ BALL -->
+
+      <div
+        class="login-pokeball"
+        aria-hidden="true"
+      ></div>
+
+
+      <!-- ADMIN ACCESS -->
+
+      <p class="pin-label">
+        ADMIN ACCESS
+      </p>
+
+
+      <!-- TITLE -->
+
+      <h1>
+        Enter Admin PIN
+      </h1>
+
+
+      <!-- DESCRIPTION -->
+
+      <p class="pin-description">
+        Enter the PIN to access the Pokémon Lucky Draw
+        Control Centre.
+      </p>
+
+
+      <!-- PIN -->
+
+      <input
+        id="pinInput"
+        type="password"
+        inputmode="numeric"
+        maxlength="6"
+        placeholder="Enter PIN"
+        autocomplete="off"
+      />
+
+
+      <!-- UNLOCK -->
+
+      <button
+        id="pinButton"
+        type="button"
+      >
+        Unlock
+      </button>
+
+
+      <!-- ERROR -->
+
+      <p id="pinError"></p>
+
+
     </div>
-
-
-    <!-- ADMIN LABEL -->
-    <p class="pin-eyebrow">
-      ADMIN ACCESS
-    </p>
-
-
-    <!-- TITLE -->
-    <h1>
-      Enter Admin PIN
-    </h1>
-
-
-    <!-- DESCRIPTION -->
-    <p class="pin-description">
-      Enter the PIN to access the Pokémon Lucky Draw
-      Control Centre.
-    </p>
-
-
-    <!-- PIN INPUT -->
-    <input
-      id="pinInput"
-      class="pin-input"
-      type="password"
-      inputmode="numeric"
-      maxlength="6"
-      placeholder="Enter PIN"
-      autocomplete="off"
-    />
-
-
-    <!-- UNLOCK BUTTON -->
-    <button
-      id="pinButton"
-      class="pin-unlock-btn"
-    >
-      Unlock
-    </button>
-
-
-    <!-- ERROR MESSAGE -->
-    <p
-      id="pinError"
-      class="pin-error"
-    ></p>
 
   </div>
 
-</div>
 
 
   <!-- =====================================================
-       ADMIN CONTENT
-
-       Hidden until the correct PIN is entered.
+       ADMIN CONTROL CENTRE
   ====================================================== -->
 
   <main
@@ -133,9 +582,7 @@
       <div class="name-grid">
 
 
-        <!-- =============================================
-             POLICY
-        ============================================== -->
+        <!-- POLICY -->
 
         <div class="name-box">
 
@@ -157,16 +604,14 @@
 
           <textarea
             id="policyNames"
-            placeholder="Enter one name per line&#10;&#10;Example:&#10;Ash Ketchum&#10;Misty&#10;Brock"
+            placeholder="Enter one name per line"
           ></textarea>
 
         </div>
 
 
 
-        <!-- =============================================
-             PLANNING
-        ============================================== -->
+        <!-- PLANNING -->
 
         <div class="name-box">
 
@@ -188,7 +633,7 @@
 
           <textarea
             id="planningNames"
-            placeholder="Enter one name per line&#10;&#10;Example:&#10;Professor Oak&#10;Serena&#10;Dawn"
+            placeholder="Enter one name per line"
           ></textarea>
 
         </div>
@@ -197,16 +642,15 @@
 
 
 
-      <!-- =============================================
-           NUMBER OF PRIZES
-      ============================================== -->
+      <!-- =================================================
+           PRIZES
+      ================================================== -->
 
       <div class="prize-input-area">
 
         <label for="prizeCount">
           Number of available prizes
         </label>
-
 
         <input
           id="prizeCount"
@@ -219,9 +663,9 @@
 
 
 
-      <!-- =============================================
-           CALCULATED ALLOCATION
-      ============================================== -->
+      <!-- =================================================
+           ALLOCATION
+      ================================================== -->
 
       <div class="allocation-card">
 
@@ -232,8 +676,6 @@
 
         <div class="allocation-grid">
 
-
-          <!-- TOTAL PARTICIPANTS -->
 
           <div>
 
@@ -248,9 +690,6 @@
           </div>
 
 
-
-          <!-- POLICY RATIO -->
-
           <div>
 
             <span class="allocation-label">
@@ -263,9 +702,6 @@
 
           </div>
 
-
-
-          <!-- PLANNING RATIO -->
 
           <div>
 
@@ -280,9 +716,6 @@
           </div>
 
 
-
-          <!-- POLICY WINNERS -->
-
           <div>
 
             <span class="allocation-label">
@@ -296,9 +729,6 @@
           </div>
 
 
-
-          <!-- PLANNING WINNERS -->
-
           <div>
 
             <span class="allocation-label">
@@ -311,15 +741,16 @@
 
           </div>
 
+
         </div>
 
       </div>
 
 
 
-      <!-- =============================================
-           SAVE DRAW
-      ============================================== -->
+      <!-- =================================================
+           SAVE
+      ================================================== -->
 
       <button
         id="saveDraw"
@@ -339,7 +770,7 @@
 
 
     <!-- =================================================
-         LIVE DRAW CONTROL
+         LIVE DRAW CONTROLS
     ================================================== -->
 
     <section
@@ -356,15 +787,10 @@
       </h2>
 
 
-
-      <!-- =============================================
-           DRAW STATUS
-      ============================================== -->
-
       <div class="allocation-grid">
 
 
-        <!-- PRIZES AWARDED -->
+        <!-- PRIZES -->
 
         <div>
 
@@ -390,7 +816,7 @@
 
 
 
-        <!-- POLICY STATUS -->
+        <!-- POLICY -->
 
         <div>
 
@@ -416,7 +842,7 @@
 
 
 
-        <!-- PLANNING STATUS -->
+        <!-- PLANNING -->
 
         <div>
 
@@ -440,13 +866,14 @@
 
         </div>
 
+
       </div>
 
 
 
-      <!-- =============================================
-           SPIN BUTTON
-      ============================================== -->
+      <!-- =================================================
+           SPIN
+      ================================================== -->
 
       <button
         id="spinButton"
@@ -457,9 +884,9 @@
 
 
 
-      <!-- =============================================
+      <!-- =================================================
            LATEST WINNER
-      ============================================== -->
+      ================================================== -->
 
       <div
         id="latestWinner"
@@ -470,24 +897,19 @@
           🎉 LATEST WINNER 🎉
         </p>
 
+        <h2 id="latestWinnerName"></h2>
 
-        <h2 id="latestWinnerName">
-        </h2>
-
-
-        <span id="latestWinnerGroup">
-        </span>
+        <span id="latestWinnerGroup"></span>
 
       </div>
 
 
 
-      <!-- =============================================
-           ADMIN CONTROLS
-      ============================================== -->
+      <!-- =================================================
+           DRAW CONTROLS
+      ================================================== -->
 
       <div class="draw-controls">
-
 
         <button
           id="undoButton"
@@ -504,8 +926,8 @@
           Reset Draw
         </button>
 
-
       </div>
+
 
     </section>
 
@@ -522,7 +944,6 @@
     src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"
   ></script>
 
-
   <script
     src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"
   ></script>
@@ -530,7 +951,7 @@
 
 
   <!-- =====================================================
-       ADMIN JAVASCRIPT
+       ADMIN JS
   ====================================================== -->
 
   <script src="admin.js"></script>
