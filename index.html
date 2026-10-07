@@ -1,231 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
 
   <title>Pokémon Lucky Draw</title>
 
-  <link rel="stylesheet" href="styles.css" />
+  <link
+    rel="stylesheet"
+    href="styles.css"
+  />
+
 </head>
 
-<body>
 
-  <main class="page-shell">
+<body class="broadcast-page">
 
-    <!-- =========================
+  <main class="broadcast-shell">
+
+
+    <!-- ==========================================
          HEADER
-    ========================== -->
-    <section class="card hero-card">
+    =========================================== -->
 
-      <div class="pokeball" aria-hidden="true"></div>
+    <section class="broadcast-header">
 
-      <p class="eyebrow">End-of-Year Function</p>
+      <div class="pokeball"></div>
 
-      <h1>Pokémon Lucky Draw</h1>
+      <p class="eyebrow">
+        End-of-Year Function
+      </p>
 
-      <p class="subtitle">
-        Enter your participants, set the number of prizes,
-        and spin the wheel to choose your winners!
+      <h1>
+        Pokémon Lucky Draw
+      </h1>
+
+      <p id="prizeStatus">
+        Waiting for the draw to begin...
       </p>
 
     </section>
 
 
-    <!-- =========================
-         SETUP
-    ========================== -->
-    <section class="card" id="setupSection">
 
-      <h2>1. Enter Participants</h2>
+    <!-- ==========================================
+         WHEEL
+    =========================================== -->
 
-      <div class="name-grid">
+    <section class="broadcast-wheel">
 
-        <!-- POLICY -->
-        <div class="name-box">
-
-          <div class="section-heading">
-            <h3>Policy</h3>
-            <span id="policyCount" class="count-badge">0 people</span>
-          </div>
-
-          <textarea
-            id="policyNames"
-            placeholder="Enter one name per line&#10;&#10;Example:&#10;Ash Ketchum&#10;Misty&#10;Brock"
-          ></textarea>
-
-        </div>
-
-
-        <!-- PLANNING -->
-        <div class="name-box">
-
-          <div class="section-heading">
-            <h3>Planning</h3>
-            <span id="planningCount" class="count-badge">0 people</span>
-          </div>
-
-          <textarea
-            id="planningNames"
-            placeholder="Enter one name per line&#10;&#10;Example:&#10;Professor Oak&#10;Serena&#10;Dawn"
-          ></textarea>
-
-        </div>
-
-      </div>
-
-
-      <!-- PRIZES -->
-      <div class="prize-input-area">
-
-        <label for="prizeCount">
-          Number of available prizes
-        </label>
-
-        <input
-          id="prizeCount"
-          type="number"
-          min="1"
-          value="10"
-        />
-
-      </div>
-
-
-      <!-- ALLOCATION PREVIEW -->
-      <div class="allocation-card">
-
-        <h3>Prize Allocation</h3>
-
-        <div class="allocation-grid">
-
-          <div>
-            <span class="allocation-label">Total Participants</span>
-            <strong id="totalParticipants">0</strong>
-          </div>
-
-          <div>
-            <span class="allocation-label">Policy Ratio</span>
-            <strong id="policyRatio">0%</strong>
-          </div>
-
-          <div>
-            <span class="allocation-label">Planning Ratio</span>
-            <strong id="planningRatio">0%</strong>
-          </div>
-
-          <div>
-            <span class="allocation-label">Policy Winners</span>
-            <strong id="policyAllocation">0</strong>
-          </div>
-
-          <div>
-            <span class="allocation-label">Planning Winners</span>
-            <strong id="planningAllocation">0</strong>
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <button id="startDraw" class="primary-btn">
-        Start Lucky Draw
-      </button>
-
-      <p id="setupError" class="error-message"></p>
-
-    </section>
-
-
-    <!-- =========================
-         DRAW
-    ========================== -->
-    <section class="card hidden" id="drawSection">
-
-      <div class="draw-header">
-
-        <div>
-          <p class="eyebrow">Lucky Draw</p>
-          <h2>Spin the Wheel!</h2>
-        </div>
-
-        <div class="prize-counter">
-          <span>Prizes Awarded</span>
-          <strong>
-            <span id="prizesAwarded">0</span>
-            /
-            <span id="totalPrizes">0</span>
-          </strong>
-        </div>
-
-      </div>
-
-
-      <!-- WHEEL -->
       <div class="wheel-area">
 
         <div class="pointer"></div>
 
         <canvas
           id="wheelCanvas"
-          width="650"
-          height="650"
+          width="700"
+          height="700"
         ></canvas>
-
-      </div>
-
-
-      <button id="spinButton" class="spin-btn">
-        SPIN!
-      </button>
-
-      <p id="eligibleMessage" class="eligible-message"></p>
-
-
-      <!-- WINNER -->
-      <div id="winnerAnnouncement" class="winner-announcement hidden">
-
-        <p class="winner-small">🎉 WINNER 🎉</p>
-
-        <h2 id="winnerName"></h2>
-
-        <span id="winnerGroup"></span>
-
-      </div>
-
-
-      <!-- CONTROLS -->
-      <div class="draw-controls">
-
-        <button id="undoButton" class="secondary-btn">
-          Undo Last Winner
-        </button>
-
-        <button id="resetButton" class="danger-btn">
-          Reset Draw
-        </button>
 
       </div>
 
     </section>
 
 
-    <!-- =========================
-         WINNERS
-    ========================== -->
-    <section class="card hidden" id="winnersSection">
 
-      <h2>🏆 Winners</h2>
+    <!-- ==========================================
+         WINNER
+    =========================================== -->
 
-      <div id="winnersList" class="winners-list"></div>
+    <section
+      id="winnerAnnouncement"
+      class="broadcast-winner hidden"
+    >
+
+      <p class="winner-small">
+        🎉 WINNER 🎉
+      </p>
+
+      <h2 id="winnerName"></h2>
+
+      <span id="winnerGroup"></span>
+
+    </section>
+
+
+    <!-- ==========================================
+         COMPLETED
+    =========================================== -->
+
+    <section
+      id="drawComplete"
+      class="broadcast-winner hidden"
+    >
+
+      <p class="winner-small">
+        ⭐ LUCKY DRAW COMPLETE ⭐
+      </p>
+
+      <h2>
+        Congratulations to all our winners!
+      </h2>
 
     </section>
 
   </main>
 
 
+  <!-- FIREBASE -->
+
+  <script
+    src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js">
+  </script>
+
+  <script
+    src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js">
+  </script>
+
   <script src="script.js"></script>
 
 </body>
+
 </html>
