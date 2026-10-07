@@ -853,92 +853,197 @@ button:disabled {
 
 .broadcast-page {
   min-height: 100vh;
+  margin: 0;
 
   overflow-x: hidden;
 
   background:
     radial-gradient(
-      circle at top,
-      #ffffff 0%,
-      #f5f9ff 45%,
-      #eef4ff 100%
+      circle at 50% 30%,
+      #fffdf5 0%,
+      #fffbed 45%,
+      #f8f3e3 100%
     );
-}
 
-.broadcast-shell {
-  width: min(1100px, 96%);
-
-  margin: 0 auto;
-
-  padding: 25px 0 60px;
-
-  text-align: center;
+  color: #1f2937;
 }
 
 
 /* =========================================================
-   BROADCAST HEADER
+   BROADCAST SHELL
+========================================================= */
+
+.broadcast-shell {
+  width: min(1180px, 94%);
+
+  margin: 0 auto;
+
+  padding: 32px 0 55px;
+}
+
+
+/* =========================================================
+   MAIN STAGE CARD
+========================================================= */
+
+.broadcast-stage {
+  position: relative;
+
+  overflow: hidden;
+
+  padding: 32px 40px 42px;
+
+  border-radius: 28px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 25px 65px
+    rgba(55, 65, 81, 0.12);
+}
+
+
+/* =========================================================
+   RED TOP ACCENT
+========================================================= */
+
+.broadcast-red-line {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 9px;
+
+  background: #ed1c24;
+}
+
+
+/* =========================================================
+   HEADER
 ========================================================= */
 
 .broadcast-header {
   text-align: center;
+
+  padding-top: 5px;
 }
 
-.broadcast-header .pokeball {
-  margin-bottom: 12px;
+
+.broadcast-pokeball {
+  width: 60px;
+  height: 60px;
+
+  margin: 0 auto 14px;
+
+  border-width: 5px;
 }
+
+
+.broadcast-pokeball::after {
+  width: 18px;
+  height: 18px;
+
+  border-width: 4px;
+}
+
+
+.broadcast-eyebrow {
+  margin: 0 0 9px;
+
+  color: #ed1c24;
+
+  font-size: 12px;
+  font-weight: 800;
+
+  letter-spacing: 2.5px;
+
+  text-transform: uppercase;
+}
+
 
 .broadcast-header h1 {
-  margin: 5px 0 8px;
+  margin: 0 0 13px;
 
-  color: #2563eb;
+  color: #19447c;
 
   font-size:
     clamp(
       38px,
       5vw,
-      64px
+      58px
     );
-}
 
-.broadcast-header p {
-  margin: 8px 0;
+  font-weight: 800;
 
-  color: #6b7280;
-
-  font-size: 17px;
+  line-height: 1.1;
 }
 
 
 /* =========================================================
-   BROADCAST WHEEL
+   PRIZE STATUS
 ========================================================= */
 
-.broadcast-wheel {
-  display: flex;
+.broadcast-status {
+  display: inline-block;
 
-  align-items: center;
-  justify-content: center;
+  margin: 2px auto 0;
+
+  padding: 9px 18px;
+
+  border-radius: 999px;
+
+  background: #f1f6fb;
+
+  color: #687386;
+
+  font-size: 14px;
+  font-weight: 600;
 }
 
-.wheel-area {
+
+/* =========================================================
+   WHEEL PANEL
+========================================================= */
+
+.broadcast-wheel-panel {
+  max-width: 800px;
+
+  margin: 24px auto 0;
+
+  padding: 28px;
+
+  border: 1px solid #edf0f4;
+
+  border-radius: 24px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #fbfcfe,
+      #f5f8fc
+    );
+}
+
+
+/* =========================================================
+   WHEEL
+========================================================= */
+
+.broadcast-wheel-panel .wheel-area {
   position: relative;
 
-  width: min(650px, 100%);
-
-  margin: 35px auto 20px;
-}
-
-.broadcast-wheel .wheel-area {
   width:
     min(
-      680px,
-      75vh,
-      92vw
+      640px,
+      65vh,
+      78vw
     );
 
-  margin: 25px auto;
+  margin: 0 auto;
 }
+
 
 #wheelCanvas {
   display: block;
@@ -950,19 +1055,20 @@ button:disabled {
 
   filter:
     drop-shadow(
-      0 15px 20px rgba(0, 0, 0, 0.15)
+      0 15px 25px
+      rgba(31, 41, 55, 0.14)
     );
 }
 
 
 /* =========================================================
-   WHEEL POINTER
+   POINTER
 ========================================================= */
 
-.pointer {
+.broadcast-wheel-panel .pointer {
   position: absolute;
 
-  top: -8px;
+  top: -15px;
   left: 50%;
 
   z-index: 10;
@@ -970,194 +1076,238 @@ button:disabled {
   width: 0;
   height: 0;
 
-  border-top: 42px solid #111827;
-  border-right: 20px solid transparent;
-  border-left: 20px solid transparent;
+  border-left:
+    18px solid transparent;
 
-  transform: translateX(-50%);
+  border-right:
+    18px solid transparent;
+
+  border-top:
+    38px solid #19447c;
+
+  transform:
+    translateX(-50%);
+
+  filter:
+    drop-shadow(
+      0 4px 3px
+      rgba(0, 0, 0, 0.12)
+    );
 }
 
 
 /* =========================================================
-   BROADCAST WINNER
+   WINNER ANNOUNCEMENT
 ========================================================= */
 
 .broadcast-winner {
-  max-width: 700px;
+  position: relative;
 
-  margin: 20px auto;
+  max-width: 720px;
 
-  padding: 25px 35px;
+  margin: 25px auto 0;
 
-  border: 4px solid #facc15;
-  border-radius: 25px;
+  padding: 25px 30px;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    #f3d784;
+
+  border-radius: 20px;
 
   background:
     linear-gradient(
       135deg,
-      #fff7cc,
-      #ffedd5
+      #fffdf1,
+      #fff6d7
     );
 
   text-align: center;
 
   box-shadow:
-    0 15px 40px rgba(0, 0, 0, 0.12);
+    0 14px 30px
+    rgba(55, 65, 81, 0.08);
 }
+
+
+.broadcast-winner::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 6px;
+
+  background: #f4c430;
+}
+
 
 .broadcast-winner .winner-small {
-  margin-bottom: 8px;
+  margin: 0 0 7px;
 
-  color: #92400e;
+  color: #a16207;
+
+  font-size: 12px;
+  font-weight: 800;
+
+  letter-spacing: 2px;
 }
 
-.broadcast-winner h2 {
-  margin: 5px 0 15px;
 
-  color: #1f2937;
+.broadcast-winner h2 {
+  margin: 0 0 12px;
+
+  color: #19447c;
 
   font-size:
     clamp(
       34px,
       5vw,
-      60px
+      54px
     );
+
+  font-weight: 800;
 }
+
 
 .broadcast-winner span {
   display: inline-block;
 
-  padding: 8px 20px;
+  padding: 7px 18px;
 
   border-radius: 999px;
 
   background: #ffffff;
 
-  color: #1f2937;
+  color: #687386;
 
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 700;
+
+  box-shadow:
+    0 3px 10px
+    rgba(0, 0, 0, 0.05);
 }
 
 
 /* =========================================================
-   TABLET
+   DRAW COMPLETE
+========================================================= */
+
+.broadcast-complete {
+  max-width: 720px;
+
+  margin: 25px auto 0;
+
+  padding: 24px 30px;
+
+  border-radius: 20px;
+
+  background: #f1f6fb;
+
+  text-align: center;
+}
+
+
+.broadcast-complete p {
+  margin: 0 0 8px;
+
+  color: #347fc1;
+
+  font-size: 12px;
+  font-weight: 800;
+
+  letter-spacing: 2px;
+}
+
+
+.broadcast-complete h2 {
+  margin: 0;
+
+  color: #19447c;
+
+  font-size: 24px;
+}
+
+
+/* =========================================================
+   BROADCAST TABLET
 ========================================================= */
 
 @media (max-width: 850px) {
 
-  .allocation-grid {
-    grid-template-columns:
-      repeat(2, 1fr);
-  }
-
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 750px) {
-
-  .page-shell {
-    width: 94%;
-
-    margin: 20px auto 50px;
-  }
-
-
-  .card {
-    padding: 22px;
-
-    border-radius: 20px;
-  }
-
-
-  .name-grid {
-    grid-template-columns: 1fr;
-  }
-
-
-  .allocation-grid {
-    grid-template-columns:
-      1fr 1fr;
-  }
-
-
-  .draw-controls {
-    flex-direction: column;
-  }
-
-
-  .draw-controls button {
-    width: 100%;
-  }
-
-
   .broadcast-shell {
     width: 96%;
 
-    padding-top: 18px;
+    padding:
+      20px 0 35px;
   }
 
 
-  .broadcast-wheel .wheel-area {
-    width:
-      min(
-        92vw,
-        620px
-      );
+  .broadcast-stage {
+    padding:
+      28px 22px
+      32px;
   }
 
-}
 
-
-/* =========================================================
-   SMALL MOBILE
-========================================================= */
-
-@media (max-width: 500px) {
-
-  .pin-lock {
+  .broadcast-wheel-panel {
     padding: 20px;
   }
 
 
-  .pin-card {
-    max-width: 390px;
+  .broadcast-wheel-panel .wheel-area {
+    width: min(82vw, 620px);
+  }
+
+}
+
+
+/* =========================================================
+   BROADCAST MOBILE
+========================================================= */
+
+@media (max-width: 550px) {
+
+  .broadcast-stage {
+    border-radius: 20px;
+  }
+
+
+  .broadcast-header h1 {
+    font-size: 35px;
+  }
+
+
+  .broadcast-pokeball {
+    width: 52px;
+    height: 52px;
+  }
+
+
+  .broadcast-wheel-panel {
+    margin-top: 20px;
 
     padding:
-      32px 24px 36px;
+      20px 10px 12px;
+
+    border-radius: 18px;
   }
 
 
-  .pin-card h1 {
-    font-size: 23px;
+  .broadcast-wheel-panel .wheel-area {
+    width: 84vw;
   }
 
 
-  .pin-description {
-    font-size: 14px;
-  }
-
-
-  .pin-input {
-    height: 54px;
-  }
-
-
-  .allocation-grid {
-    grid-template-columns: 1fr;
-  }
-
-
-  .spin-btn {
-    width: 100%;
-
-    min-width: 0;
-
-    padding: 17px 25px;
+  .broadcast-winner {
+    padding:
+      22px 18px;
   }
 
 }
