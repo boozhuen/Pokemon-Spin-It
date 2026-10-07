@@ -28,7 +28,7 @@ function unlockAdmin() {
 
   if (enteredPin === ADMIN_PIN) {
 
-    pinLock.classList.add("hidden");
+    pinLock.classList.add("pin-hidden");
 
     adminContent.classList.remove("hidden");
 
