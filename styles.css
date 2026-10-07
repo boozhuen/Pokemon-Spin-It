@@ -45,7 +45,6 @@ textarea {
 
 .page-shell {
   width: min(1100px, 92%);
-
   margin: 40px auto 80px;
 }
 
@@ -55,17 +54,15 @@ textarea {
 ========================================================= */
 
 .card {
+  padding: 32px;
+  margin-bottom: 24px;
+
   background: #ffffff;
 
   border-radius: 24px;
 
-  padding: 32px;
-
-  margin-bottom: 24px;
-
   box-shadow:
-    0 12px 35px
-    rgba(0, 0, 0, 0.08);
+    0 12px 35px rgba(0, 0, 0, 0.08);
 }
 
 
@@ -75,7 +72,6 @@ textarea {
 
 .hero-card {
   position: relative;
-
   overflow: hidden;
 
   text-align: center;
@@ -119,7 +115,7 @@ textarea {
 
 
 /* =========================================================
-   POKEBALL
+   STANDARD POKEBALL
 ========================================================= */
 
 .pokeball {
@@ -161,11 +157,7 @@ textarea {
 
   background: #ffffff;
 
-  transform:
-    translate(
-      -50%,
-      -50%
-    );
+  transform: translate(-50%, -50%);
 }
 
 
@@ -177,9 +169,7 @@ textarea {
   display: flex;
 
   align-items: center;
-
-  justify-content:
-    space-between;
+  justify-content: space-between;
 
   gap: 15px;
 }
@@ -229,10 +219,7 @@ textarea {
 
   resize: vertical;
 
-  border:
-    2px solid
-    #e5e7eb;
-
+  border: 2px solid #e5e7eb;
   border-radius: 16px;
 
   background: #ffffff;
@@ -254,13 +241,7 @@ textarea:focus {
   border-color: #3b82f6;
 
   box-shadow:
-    0 0 0 4px
-    rgba(
-      59,
-      130,
-      246,
-      0.1
-    );
+    0 0 0 4px rgba(59, 130, 246, 0.1);
 }
 
 
@@ -285,10 +266,7 @@ textarea:focus {
 
   padding: 12px 15px;
 
-  border:
-    2px solid
-    #e5e7eb;
-
+  border: 2px solid #e5e7eb;
   border-radius: 12px;
 
   background: #ffffff;
@@ -308,18 +286,12 @@ textarea:focus {
   border-color: #3b82f6;
 
   box-shadow:
-    0 0 0 4px
-    rgba(
-      59,
-      130,
-      246,
-      0.1
-    );
+    0 0 0 4px rgba(59, 130, 246, 0.1);
 }
 
 
 /* =========================================================
-   ALLOCATION / ADMIN STATISTICS
+   ALLOCATION CARD
 ========================================================= */
 
 .allocation-card {
@@ -340,10 +312,7 @@ textarea:focus {
   display: grid;
 
   grid-template-columns:
-    repeat(
-      5,
-      1fr
-    );
+    repeat(5, 1fr);
 
   gap: 12px;
 }
@@ -394,8 +363,7 @@ button {
 }
 
 button:hover {
-  transform:
-    translateY(-2px);
+  transform: translateY(-2px);
 }
 
 button:disabled {
@@ -426,13 +394,7 @@ button:disabled {
   font-weight: 800;
 
   box-shadow:
-    0 8px 18px
-    rgba(
-      37,
-      99,
-      235,
-      0.18
-    );
+    0 8px 18px rgba(37, 99, 235, 0.18);
 }
 
 .primary-btn:hover {
@@ -451,8 +413,7 @@ button:disabled {
 
   margin: 30px auto 20px;
 
-  padding:
-    18px 60px;
+  padding: 18px 60px;
 
   border-radius: 999px;
 
@@ -464,8 +425,7 @@ button:disabled {
   font-weight: 900;
 
   box-shadow:
-    0 8px 0
-    #b91c1c;
+    0 8px 0 #b91c1c;
 }
 
 .spin-btn:hover {
@@ -473,12 +433,10 @@ button:disabled {
 }
 
 .spin-btn:active {
-  transform:
-    translateY(5px);
+  transform: translateY(5px);
 
   box-shadow:
-    0 3px 0
-    #b91c1c;
+    0 3px 0 #b91c1c;
 }
 
 
@@ -488,8 +446,7 @@ button:disabled {
 
 .secondary-btn,
 .danger-btn {
-  padding:
-    12px 20px;
+  padding: 12px 20px;
 
   border-radius: 10px;
 
@@ -545,10 +502,7 @@ button:disabled {
 
   padding: 25px;
 
-  border:
-    3px solid
-    #facc15;
-
+  border: 3px solid #facc15;
   border-radius: 20px;
 
   background:
@@ -562,8 +516,7 @@ button:disabled {
 }
 
 .winner-small {
-  margin:
-    0 0 8px;
+  margin: 0 0 8px;
 
   font-weight: 800;
 
@@ -579,8 +532,7 @@ button:disabled {
 .winner-announcement span {
   display: inline-block;
 
-  padding:
-    7px 15px;
+  padding: 7px 15px;
 
   border-radius: 999px;
 
@@ -610,7 +562,7 @@ button:disabled {
 
 
 /* =========================================================
-   ADMIN PIN LOCK
+   ADMIN PIN SCREEN
 ========================================================= */
 
 .pin-lock {
@@ -623,17 +575,18 @@ button:disabled {
   display: flex;
 
   align-items: center;
-
   justify-content: center;
 
-  padding: 24px;
+  min-height: 100vh;
+
+  padding: 30px;
 
   background:
     radial-gradient(
-      circle at top,
-      #ffffff 0%,
-      #f3f7ff 45%,
-      #e8f0ff 100%
+      circle at 50% 40%,
+      #fffdf5 0%,
+      #fffbed 45%,
+      #faf6e7 100%
     );
 }
 
@@ -643,31 +596,40 @@ button:disabled {
 ========================================================= */
 
 .pin-card {
+  position: relative;
+
   width: 100%;
+  max-width: 420px;
 
-  max-width: 430px;
+  padding: 34px 32px 42px;
 
-  padding:
-    42px 38px;
+  overflow: hidden;
 
-  border:
-    1px solid
-    #eef2f7;
-
-  border-radius: 28px;
+  border-radius: 21px;
 
   background: #ffffff;
 
   text-align: center;
 
   box-shadow:
-    0 25px 70px
-    rgba(
-      0,
-      0,
-      0,
-      0.14
-    );
+    0 25px 60px rgba(55, 65, 81, 0.12);
+}
+
+
+/* RED TOP STRIPE */
+
+.pin-card::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 8px;
+
+  background: #ef1b24;
 }
 
 
@@ -675,29 +637,62 @@ button:disabled {
    PIN POKEBALL
 ========================================================= */
 
-.pin-card .pokeball {
-  width: 76px;
-  height: 76px;
+.pin-pokeball {
+  position: relative;
 
-  margin:
-    0 auto 24px;
+  width: 58px;
+  height: 58px;
+
+  margin: 5px auto 14px;
+
+  overflow: hidden;
+
+  border: 4px solid #202124;
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #f04b50 0%,
+      #f04b50 44%,
+      #202124 44%,
+      #202124 54%,
+      #ffffff 54%,
+      #ffffff 100%
+    );
+}
+
+.pin-pokeball-centre {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 22px;
+  height: 22px;
+
+  border: 4px solid #202124;
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  transform: translate(-50%, -50%);
 }
 
 
 /* =========================================================
-   PIN EYEBROW
+   PIN ADMIN LABEL
 ========================================================= */
 
-.pin-card .eyebrow {
-  margin:
-    0 0 10px;
+.pin-eyebrow {
+  margin: 0 0 10px;
 
-  color: #ef4444;
+  color: #ed1c24;
 
   font-size: 12px;
   font-weight: 800;
 
-  letter-spacing: 2.5px;
+  letter-spacing: 2px;
 
   text-transform: uppercase;
 }
@@ -708,12 +703,11 @@ button:disabled {
 ========================================================= */
 
 .pin-card h1 {
-  margin:
-    0 0 12px;
+  margin: 0 0 18px;
 
-  color: #1f2937;
+  color: #19447c;
 
-  font-size: 32px;
+  font-size: 25px;
   font-weight: 800;
 
   line-height: 1.2;
@@ -724,15 +718,17 @@ button:disabled {
    PIN DESCRIPTION
 ========================================================= */
 
-.pin-card > p:not(.eyebrow):not(.error-message) {
-  margin:
-    0 0 25px;
+.pin-description {
+  max-width: 310px;
 
-  color: #6b7280;
+  margin: 0 auto 22px;
+
+  color: #687386;
 
   font-size: 15px;
+  font-weight: 400;
 
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
 
@@ -740,65 +736,51 @@ button:disabled {
    PIN INPUT
 ========================================================= */
 
-.pin-card input {
+.pin-input {
   display: block;
 
   width: 100%;
-  height: 58px;
+  height: 56px;
 
-  margin:
-    0 0 14px;
+  margin: 0 0 12px;
 
-  padding:
-    0 18px;
+  padding: 0 20px;
 
-  border:
-    2px solid
-    #e5e7eb;
+  border: 1px solid #d9dee7;
+  border-radius: 12px;
 
-  border-radius: 14px;
+  background: #ffffff;
 
-  background: #f9fafb;
+  color: #374151;
 
-  color: #111827;
-
-  font-size: 22px;
-  font-weight: 700;
+  font-size: 20px;
+  font-weight: 500;
 
   text-align: center;
 
-  letter-spacing: 10px;
+  letter-spacing: 8px;
 
   outline: none;
 
   transition:
     border-color 0.2s ease,
-    box-shadow 0.2s ease,
-    background 0.2s ease;
+    box-shadow 0.2s ease;
 }
 
-.pin-card input::placeholder {
-  color: #9ca3af;
+.pin-input::placeholder {
+  color: #7a8290;
 
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 400;
 
-  letter-spacing: normal;
+  letter-spacing: 7px;
 }
 
-.pin-card input:focus {
-  border-color: #3b82f6;
-
-  background: #ffffff;
+.pin-input:focus {
+  border-color: #347fc1;
 
   box-shadow:
-    0 0 0 4px
-    rgba(
-      59,
-      130,
-      246,
-      0.12
-    );
+    0 0 0 3px rgba(52, 127, 193, 0.12);
 }
 
 
@@ -806,20 +788,16 @@ button:disabled {
    PIN UNLOCK BUTTON
 ========================================================= */
 
-.pin-card .primary-btn {
-  display: block;
-
+.pin-unlock-btn {
   width: 100%;
-  height: 56px;
+  height: 48px;
 
   margin: 0;
 
-  padding: 0 20px;
-
   border: none;
-  border-radius: 14px;
+  border-radius: 11px;
 
-  background: #2563eb;
+  background: #347fc1;
 
   color: #ffffff;
 
@@ -829,39 +807,25 @@ button:disabled {
   cursor: pointer;
 
   box-shadow:
-    0 8px 20px
-    rgba(
-      37,
-      99,
-      235,
-      0.22
-    );
+    0 10px 22px rgba(52, 127, 193, 0.22);
 
   transition:
+    background 0.15s ease,
     transform 0.15s ease,
-    box-shadow 0.15s ease,
-    background 0.15s ease;
+    box-shadow 0.15s ease;
 }
 
-.pin-card .primary-btn:hover {
-  background: #1d4ed8;
+.pin-unlock-btn:hover {
+  background: #286eae;
 
-  transform:
-    translateY(-2px);
+  transform: translateY(-1px);
 
   box-shadow:
-    0 12px 25px
-    rgba(
-      37,
-      99,
-      235,
-      0.28
-    );
+    0 12px 25px rgba(52, 127, 193, 0.28);
 }
 
-.pin-card .primary-btn:active {
-  transform:
-    translateY(0);
+.pin-unlock-btn:active {
+  transform: translateY(1px);
 }
 
 
@@ -869,11 +833,10 @@ button:disabled {
    PIN ERROR
 ========================================================= */
 
-.pin-card .error-message {
-  min-height: 20px;
+.pin-error {
+  min-height: 18px;
 
-  margin:
-    14px 0 0;
+  margin: 12px 0 -10px;
 
   color: #dc2626;
 
@@ -903,16 +866,11 @@ button:disabled {
 }
 
 .broadcast-shell {
-  width:
-    min(
-      1100px,
-      96%
-    );
+  width: min(1100px, 96%);
 
   margin: 0 auto;
 
-  padding:
-    25px 0 60px;
+  padding: 25px 0 60px;
 
   text-align: center;
 }
@@ -931,8 +889,7 @@ button:disabled {
 }
 
 .broadcast-header h1 {
-  margin:
-    5px 0 8px;
+  margin: 5px 0 8px;
 
   color: #2563eb;
 
@@ -945,8 +902,7 @@ button:disabled {
 }
 
 .broadcast-header p {
-  margin:
-    8px 0;
+  margin: 8px 0;
 
   color: #6b7280;
 
@@ -962,21 +918,15 @@ button:disabled {
   display: flex;
 
   align-items: center;
-
   justify-content: center;
 }
 
 .wheel-area {
   position: relative;
 
-  width:
-    min(
-      650px,
-      100%
-    );
+  width: min(650px, 100%);
 
-  margin:
-    35px auto 20px;
+  margin: 35px auto 20px;
 }
 
 .broadcast-wheel .wheel-area {
@@ -987,8 +937,7 @@ button:disabled {
       92vw
     );
 
-  margin:
-    25px auto;
+  margin: 25px auto;
 }
 
 #wheelCanvas {
@@ -1001,13 +950,7 @@ button:disabled {
 
   filter:
     drop-shadow(
-      0 15px 20px
-      rgba(
-        0,
-        0,
-        0,
-        0.15
-      )
+      0 15px 20px rgba(0, 0, 0, 0.15)
     );
 }
 
@@ -1027,20 +970,11 @@ button:disabled {
   width: 0;
   height: 0;
 
-  border-top:
-    42px solid
-    #111827;
+  border-top: 42px solid #111827;
+  border-right: 20px solid transparent;
+  border-left: 20px solid transparent;
 
-  border-right:
-    20px solid
-    transparent;
-
-  border-left:
-    20px solid
-    transparent;
-
-  transform:
-    translateX(-50%);
+  transform: translateX(-50%);
 }
 
 
@@ -1051,16 +985,11 @@ button:disabled {
 .broadcast-winner {
   max-width: 700px;
 
-  margin:
-    20px auto;
+  margin: 20px auto;
 
-  padding:
-    25px 35px;
+  padding: 25px 35px;
 
-  border:
-    4px solid
-    #facc15;
-
+  border: 4px solid #facc15;
   border-radius: 25px;
 
   background:
@@ -1073,13 +1002,7 @@ button:disabled {
   text-align: center;
 
   box-shadow:
-    0 15px 40px
-    rgba(
-      0,
-      0,
-      0,
-      0.12
-    );
+    0 15px 40px rgba(0, 0, 0, 0.12);
 }
 
 .broadcast-winner .winner-small {
@@ -1089,8 +1012,7 @@ button:disabled {
 }
 
 .broadcast-winner h2 {
-  margin:
-    5px 0 15px;
+  margin: 5px 0 15px;
 
   color: #1f2937;
 
@@ -1105,8 +1027,7 @@ button:disabled {
 .broadcast-winner span {
   display: inline-block;
 
-  padding:
-    8px 20px;
+  padding: 8px 20px;
 
   border-radius: 999px;
 
@@ -1127,10 +1048,7 @@ button:disabled {
 
   .allocation-grid {
     grid-template-columns:
-      repeat(
-        2,
-        1fr
-      );
+      repeat(2, 1fr);
   }
 
 }
@@ -1145,8 +1063,7 @@ button:disabled {
   .page-shell {
     width: 94%;
 
-    margin:
-      20px auto 50px;
+    margin: 20px auto 50px;
   }
 
 
@@ -1158,8 +1075,7 @@ button:disabled {
 
 
   .name-grid {
-    grid-template-columns:
-      1fr;
+    grid-template-columns: 1fr;
   }
 
 
@@ -1198,38 +1114,41 @@ button:disabled {
 
 
 /* =========================================================
-   SMALL MOBILE / PIN SCREEN
+   SMALL MOBILE
 ========================================================= */
 
 @media (max-width: 500px) {
 
   .pin-lock {
-    padding: 16px;
+    padding: 20px;
   }
 
 
   .pin-card {
-    padding:
-      34px 24px;
+    max-width: 390px;
 
-    border-radius: 22px;
+    padding:
+      32px 24px 36px;
   }
 
 
   .pin-card h1 {
-    font-size: 27px;
+    font-size: 23px;
   }
 
 
-  .pin-card .pokeball {
-    width: 68px;
-    height: 68px;
+  .pin-description {
+    font-size: 14px;
+  }
+
+
+  .pin-input {
+    height: 54px;
   }
 
 
   .allocation-grid {
-    grid-template-columns:
-      1fr;
+    grid-template-columns: 1fr;
   }
 
 
@@ -1238,8 +1157,7 @@ button:disabled {
 
     min-width: 0;
 
-    padding:
-      17px 25px;
+    padding: 17px 25px;
   }
 
 }
